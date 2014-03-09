@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="PizzaShop" default="default" basedir=".">
     <description>Builds, tests, and runs the project PizzaShop.</description>
-    
+
+    <!-- Default Netbeans Imports -->
+    <import file="nbproject/build-impl.xml"/>    
+
     <!-- Properties -->
 		<!-- General Vars -->
 		<property name="project.name" value="PizzaShop" />
@@ -15,9 +18,11 @@
     	<!-- Report Paths -->
     	<property name="reports.tests" location="reports/${project.name}"/>
     	
+    	<!-- Fixes for CI Server -->
+    	<property name="libs.CopyLibs.classpath" location="/usr/share/netbeans/7.0.1/java/ant/extra"/>
+    	
     	   
-    <!-- Default Netbeans Imports -->
-    <import file="nbproject/build-impl.xml"/>
+
     
     <!-- Unit Tests Target - Temporarily ignored for test target provided by netbeans. -->
     <target name="unittests">
