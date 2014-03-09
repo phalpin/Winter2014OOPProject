@@ -5,11 +5,6 @@
  */
 
 package PizzaShop.Models;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -17,29 +12,15 @@ import static org.junit.Assert.*;
  * Test Harness for the Person Model
  * @author phalpin
  */
-public class PersonTest {
+public class PersonTest{
     
     public PersonTest() {
     }
     
-    //<editor-fold desc="Setups, Teardowns, etc">
-    @BeforeClass
-    public static void setUpClass() {
+    @Test
+    public void Test_Person_ToJson(){
+        assertTrue(false);
     }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-    //</editor-fold>
-    
     
     
 }

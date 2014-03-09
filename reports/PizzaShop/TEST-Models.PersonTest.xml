@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="1" failures="0" hostname="Phillips-MacBook-Pro-2.local" name="Models.PersonTest" skipped="0" tests="1" time="0.0" timestamp="2014-03-09T04:43:47">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="ant.file.PizzaShop-impl" value="/Users/phalpin/NetBeansProjects/PizzaShop/nbproject/build-impl.xml" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="ant.file.type.PizzaShop-rest-build" value="file" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib/JObjC.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/classes" />
+    <property name="jspc.schemas" value="/resources/schemas/" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="/Library/ant" />
+    <property name="java.runtime.version" value="1.7.0_25-b15" />
+    <property name="reports.tests" value="/Users/phalpin/NetBeansProjects/PizzaShop/reports/PizzaShop" />
+    <property name="user.name" value="phalpin" />
+    <property name="ant.file.type.PizzaShop-impl" value="file" />
+    <property name="ant.file.type.PizzaShop" value="file" />
+    <property name="user.language" value="en" />
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib" />
+    <property name="ant.project.default-target" value="default" />
+    <property name="ant.project.name" value="PizzaShop" />
+    <property name="java.version" value="1.7.0_25" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="jspc.dtds" value="/resources/dtds/" />
+    <property name="lib.junit" value="/Users/phalpin/NetBeansProjects/PizzaShop/lib/junit-4.10.jar" />
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="src.tests" value="/Users/phalpin/NetBeansProjects/PizzaShop/test/PizzaShop" />
+    <property name="java.class.version" value="51.0" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="ant.file" value="/Users/phalpin/NetBeansProjects/PizzaShop/build.xml" />
+    <property name="os.version" value="10.9.1" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="23.25-b01" />
+    <property name="ant.library.dir" value="/Library/ant/lib" />
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="user.home" value="/Users/phalpin" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="java.library.path" value="/Users/phalpin/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="gopherProxySet" value="false" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Models.PersonTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=true formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter,/Users/phalpin/NetBeansProjects/PizzaShop/reports/PizzaShop/TEST-Models.PersonTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/phalpin/NetBeansProjects/PizzaShop/reports/PizzaShop/TEST-Models.PersonTest.xml crashfile=/Users/phalpin/NetBeansProjects/PizzaShop/junitvmwatcher4771896115847011087.properties propsfile=/Users/phalpin/NetBeansProjects/PizzaShop/junit2043625702792704900.properties" />
+    <property name="java.class.path" value="/Library/ant/lib/ant-launcher.jar:/Library/ant/lib/ant-antlr.jar:/Library/ant/lib/ant-apache-bcel.jar:/Library/ant/lib/ant-apache-bsf.jar:/Library/ant/lib/ant-apache-log4j.jar:/Library/ant/lib/ant-apache-oro.jar:/Library/ant/lib/ant-apache-regexp.jar:/Library/ant/lib/ant-apache-resolver.jar:/Library/ant/lib/ant-apache-xalan2.jar:/Library/ant/lib/ant-commons-logging.jar:/Library/ant/lib/ant-commons-net.jar:/Library/ant/lib/ant-jai.jar:/Library/ant/lib/ant-javamail.jar:/Library/ant/lib/ant-jdepend.jar:/Library/ant/lib/ant-jmf.jar:/Library/ant/lib/ant-jsch.jar:/Library/ant/lib/ant-junit.jar:/Library/ant/lib/ant-junit4.jar:/Library/ant/lib/ant-netrexx.jar:/Library/ant/lib/ant-swing.jar:/Library/ant/lib/ant-testutil.jar:/Library/ant/lib/ant.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/lib/tools.jar:/Users/phalpin/NetBeansProjects/PizzaShop/lib/junit-4.10.jar" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.3 compiled on December 23 2013" />
+    <property name="project.name" value="PizzaShop" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="java.io.tmpdir" value="/var/folders/tb/mvb6yp0n533bwrs0l_m2bmvw0000gn/T/" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="ant.file.PizzaShop-rest-build" value="/Users/phalpin/NetBeansProjects/PizzaShop/nbproject/rest-build.xml" />
+    <property name="os.arch" value="x86_64" />
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
+    <property name="java.ext.dirs" value="/Users/phalpin/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+    <property name="user.dir" value="/Users/phalpin/NetBeansProjects/PizzaShop" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="basedir" value="/Users/phalpin/NetBeansProjects/PizzaShop" />
+    <property name="ant.java.version" value="1.7" />
+    <property name="ant.core.lib" value="/Library/ant/lib/ant.jar" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="ant.project.invoked-targets" value="unittests" />
+    <property name="ant.file.PizzaShop" value="/Users/phalpin/NetBeansProjects/PizzaShop/build.xml" />
+  </properties>
+  <error message="Models.PersonTest" type="java.lang.ClassNotFoundException">java.lang.ClassNotFoundException: Models.PersonTest
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:190)
+</error>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
