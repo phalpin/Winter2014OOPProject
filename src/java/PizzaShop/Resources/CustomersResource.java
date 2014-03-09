@@ -16,10 +16,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import PizzaShop.Models.*;
-import com.google.gson.Gson;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
-import org.codehaus.jettison.json.JSONObject;
 
 /**
  * REST Web Service
@@ -32,7 +30,6 @@ public class CustomersResource {
     @Context
     private UriInfo context;
     private static Person cust;
-    private Gson _gson;
 
     /**
      * Creates a new instance of CustomersResource
