@@ -6,20 +6,21 @@
     <import file="nbproject/build-impl.xml"/>    
 
     <!-- Properties -->
-		<!-- General Vars -->
-		<property name="project.name" value="PizzaShop" />
+	<!-- General Vars -->
+	<property name="project.name" value="PizzaShop" />
 
     	<!-- Libs -->
     	<property name="lib.junit" location="lib/junit-4.10.jar"/>
-    	
+    	<property name="libs.CopyLibs.classpath" location="lib/org-netbeans-modules-java-j2seproject-copylibstask.jar"/>
+        
+            	
     	<!-- Project Paths -->
     	<property name="src.tests" location="test/${project.name}"/>
     	
     	<!-- Report Paths -->
     	<property name="reports.tests" location="reports/${project.name}"/>
     	
-    	<!-- Fixes for CI Server -->
-    	<property name="libs.CopyLibs.classpath" location="/usr/share/netbeans/7.0.1/java/ant/extra"/>
+
     	
     	   
 
