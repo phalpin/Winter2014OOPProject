@@ -13,6 +13,8 @@
     	<property name="lib.junit" location="lib/junit-4.10.jar"/>
     	<property name="libs.CopyLibs.classpath" location="lib/org-netbeans-modules-java-j2seproject-copylibstask.jar"/>
         <property name="libs.restapi.classpath" location="build/web/WEB-INF/lib"/>
+        <property name="libs.restlib.classpath" location="build/web/WEB-INF/lib"/>
+
             	
     	<!-- Project Paths -->
     	<property name="src.tests" location="test/${project.name}"/>
