@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html data-ng-app="pizzaShopApp" class="ng-scope">
+
+    <head>
+        <title data-ng-bind="title">M&P's Pizza Shop</title>
+    </head>
+
+    <body>
+        <div class="pageContainer container">
+
+            <!-- Shell Instantiation -->
+            <div data-ng-controller="ShellCtrl">
+
+                <div class="shell">
+
+                    <!-- Header Section -->
+                    <div class="header">
+
+                    </div>
+
+                    <!-- Nav Section -->
+                    <div class="nav">
+
+                        <ul>
+                            <li data-ng-repeat="l in Links">
+                                <a href="{{l.Path}}" title="{{l.Title}}">
+                                    {{l.Name}}
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <!-- Content Container for Views to be loaded into dynamically. -->
+                    <div class="container">
+                        <div data-ng-view></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+    <!-- Third Party JS Includes -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+
+
+    <!-- App Specific Includes -->
+    <script src="app/controllers.js"></script>
+    <script src="app/home/home.controller.js"></script>
+    <script src="app/shell/shell.controller.js"></script>
+    <script src="app/pizzas/pizzas.controller.js"></script>
+    <script src="app/app.js"></script>
+</html>
