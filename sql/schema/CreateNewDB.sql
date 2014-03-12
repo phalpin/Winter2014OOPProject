@@ -7,37 +7,37 @@ CREATE SCHEMA IF NOT EXISTS `PizzaShop` DEFAULT CHARACTER SET utf8 COLLATE utf8_
 USE `PizzaShop` ;
 
 -- -----------------------------------------------------
--- Table `PizzaShop`.`Addresses`
+-- Table `PizzaShop`.`Contacts`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `PizzaShop`.`Addresses` (
+CREATE TABLE IF NOT EXISTS `PizzaShop`.`Contacts` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `lineOne` VARCHAR(100) NOT NULL,
-  `lineTwo` VARCHAR(100) NULL,
-  `city` VARCHAR(45) NOT NULL,
-  `state` VARCHAR(45) NOT NULL,
-  `zip` INT NOT NULL,
+  `firstName` VARCHAR(50) NOT NULL,
+  `middleName` VARCHAR(50) NULL,
+  `lastName` VARCHAR(50) NOT NULL,
+  `homeNumber` VARCHAR(50) NULL,
+  `mobileNumber` VARCHAR(50) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `PizzaShop`.`Contacts`
+-- Table `PizzaShop`.`Addresses`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `PizzaShop`.`Contacts` (
+CREATE TABLE IF NOT EXISTS `PizzaShop`.`Addresses` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `addressId` INT NOT NULL,
-  `firstName` VARCHAR(50) NOT NULL,
-  `middleName` VARCHAR(50) NULL,
-  `lastName` VARCHAR(50) NOT NULL,
-  `homeNumber` VARCHAR(50) NULL,
-  `mobileNumber` VARCHAR(50) NULL,
-  PRIMARY KEY (`id`, `addressId`),
+  `contactId` INT NOT NULL,
+  `lineOne` VARCHAR(100) NOT NULL,
+  `lineTwo` VARCHAR(100) NULL,
+  `city` VARCHAR(45) NOT NULL,
+  `state` VARCHAR(45) NOT NULL,
+  `zip` INT NOT NULL,
+  PRIMARY KEY (`id`, `contactId`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  INDEX `fk_Contacts_Addresses1_idx` (`addressId` ASC),
-  CONSTRAINT `fk_Contacts_Addresses1`
-    FOREIGN KEY (`addressId`)
-    REFERENCES `PizzaShop`.`Addresses` (`id`)
+  INDEX `fk_Addresses_Contacts1_idx` (`contactId` ASC),
+  CONSTRAINT `fk_Addresses_Contacts1`
+    FOREIGN KEY (`contactId`)
+    REFERENCES `PizzaShop`.`Contacts` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -47,9 +47,10 @@ ENGINE = InnoDB;
 -- Table `PizzaShop`.`UserTypes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PizzaShop`.`UserTypes` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
 
 
@@ -80,6 +81,9 @@ CREATE TABLE IF NOT EXISTS `PizzaShop`.`Users` (
   `contactId` INT NOT NULL,
   `userTypeId` INT NOT NULL,
   `sessionId` INT NULL,
+  `username` VARCHAR(25) NULL,
+  `password` VARCHAR(100) NULL,
+  `salt` VARCHAR(45) NULL,
   PRIMARY KEY (`id`, `contactId`, `userTypeId`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   INDEX `fk_Users_Contacts1_idx` (`contactId` ASC),
