@@ -66,6 +66,7 @@
         
         <!-- Stored Procedures -->
         <sql driver="${sql.driver}" url="${sql.url}" userid="${sql.user}" password="${sql.pass}" classpath="${sql.driverhref}" delimiter=" $$">
+            <transaction src="sql/procedures/Contacts.sql" />
             <transaction src="sql/procedures/Users.sql" />
         </sql>
         

@@ -2,10 +2,13 @@
  * Module Creation for the Pizza Shop App.
  * @type {*}
  */
-var pizzaShopApp = angular.module('pizzaShopApp', [
-    'ngRoute',
-    'pizzaShopControllers'
-]);
+var pizzaShopApp = angular.module
+    ('pizzaShopApp',
+        [
+            'ngRoute',
+            'pizzaShopControllers'
+        ]
+   );
 
 /**
  * Configuration for the Pizza Shop App
