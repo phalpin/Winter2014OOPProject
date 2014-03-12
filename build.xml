@@ -15,10 +15,12 @@
         <property name="libs.restapi.classpath" location="build/web/WEB-INF/lib"/>
         <property name="libs.restlib.classpath" location="build/web/WEB-INF/lib"/>
         
-        <!-- SQL -->
+        <!-- SQL: User/Pass Dev Specific -->
         <property name="sql.driver" value="com.mysql.jdbc.Driver" />
         <property name="sql.url" value="jdbc:mysql://127.0.0.1:3306/" />
         <property name="sql.driverhref" location="lib/mysql-connector-java-5.0.8-bin.jar" />
+        <property name="sql.user" value="root" />
+        <property name="sql.pass" value="oopwinter2014" />
 
             	
     	<!-- Project Paths -->
@@ -55,6 +57,8 @@
     
     <!-- SQL Setup Target -->
     <target name="demoDB">
+        <echo message="Resetting Demo Data" />
+        
         <!-- Schema -->
         <sql driver="${sql.driver}" url="${sql.url}" userid="${sql.user}" password="${sql.pass}" classpath="${sql.driverhref}">
             <transaction src="sql/schema/CreateNewDB.sql"/>
@@ -69,6 +73,11 @@
         <sql driver="${sql.driver}" url="${sql.url}" userid="${sql.user}" password="${sql.pass}" classpath="${sql.driverhref}">
             <transaction src="sql/schema/DemoData.sql" />
         </sql>
+    </target>
+    
+    <!-- Netbeans Override Deployment Target -->
+    <target name="-pre-run-deploy">
+        <antcall target="demoDB" />
     </target>
     
     
