@@ -30,8 +30,6 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(PizzaShop.Resources.CustomerResource.class);
-        resources.add(PizzaShop.Resources.CustomersResource.class);
     }
     
 }

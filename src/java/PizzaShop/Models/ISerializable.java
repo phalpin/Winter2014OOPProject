@@ -13,7 +13,7 @@ import org.codehaus.jettison.json.JSONException;
  * @author phalpin
  * @param <T> Type to make serializable.
  */
-public interface Serializable<T> {
+public interface ISerializable<T> {
     public String toJson();
     public void fromJson(String json) throws JSONException;
     
