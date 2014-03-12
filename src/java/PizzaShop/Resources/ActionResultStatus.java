@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 
-package PizzaShop.Models;
+package PizzaShop.Resources;
 
 /**
- * The baseline for what a DBEnum should have.
+ * Action Result Status - Indicates the result of a given operation.
  * @author phalpin
  */
-public interface IDBEnum {
-    public int getName();
+public enum ActionResultStatus {
+    FAILURE,
+    SUCCESS
 }

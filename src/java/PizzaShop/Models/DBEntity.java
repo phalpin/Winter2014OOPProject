@@ -7,9 +7,15 @@
 package PizzaShop.Models;
 
 /**
- * The baseline for what a DBEnum should have.
+ * Base DB Entity Class. 
  * @author phalpin
  */
-public interface IDBEnum {
-    public int getName();
+public abstract class DBEntity implements IDBEntity {
+    private int id;
+    
+    @Override
+    public int getId() { return id; }
+    @Override
+    public void setId(int Id) { id=Id; }
+    
 }

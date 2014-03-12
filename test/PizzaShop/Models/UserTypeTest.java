@@ -6,10 +6,6 @@
 
 package PizzaShop.Models;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -58,7 +54,7 @@ public class UserTypeTest {
         System.out.println("[UserTypeTest][testGetValue]");
         UserType instance = UserType.Customer;
         int expResult = 1;
-        int result = instance.getValue();
+        int result = instance.getName();
         assertEquals(expResult, result);
     }
     

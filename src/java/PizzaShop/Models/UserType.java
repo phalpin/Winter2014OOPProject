@@ -26,7 +26,7 @@ public enum UserType implements IDBEnum {
     
     //Implementations
     @Override
-    public int getValue(){
+    public int getName(){
         return _value;
     }
 }

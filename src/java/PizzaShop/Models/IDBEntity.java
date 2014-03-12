@@ -7,9 +7,10 @@
 package PizzaShop.Models;
 
 /**
- * The baseline for what a DBEnum should have.
+ * The baseline of what a DB Driven entity should have.
  * @author phalpin
  */
-public interface IDBEnum {
-    public int getName();
+public interface IDBEntity {
+    public int getId();
+    public void setId(int id);
 }

@@ -12,9 +12,7 @@ package PizzaShop.Models;
  */
 public class User extends Contact {
 
-    public User(int id) {
-        super(id);
-    }
+    public User() {}
     
     //<editor-fold desc="Getters and Setters because lolJava">
     public int getContactId() {

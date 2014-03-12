@@ -14,16 +14,11 @@ import org.codehaus.jettison.json.JSONObject;
  *
  * @author phalpin
  */
-public class Contact implements ISerializable {
+public class Contact extends DBEntity implements ISerializable {
     
-    public Contact(int id){
-        this.id = id;
-    }
+    public Contact(){}
 
     //<editor-fold desc="Getters and Setters because lolJava.">
-    public int getId() {
-        return id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -66,7 +61,6 @@ public class Contact implements ISerializable {
     }
     //</editor-fold>
     
-    private int id;
     private String firstName;
     private String middleName;
     private String lastName;
