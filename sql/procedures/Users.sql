@@ -13,7 +13,8 @@ CREATE PROCEDURE PizzaShop.User_Create(
     IN p_userType INT
 )
 BEGIN
-    DECLARE v_ContactId INT;    
+    DECLARE v_ContactId INT;
+    DECLARE v_UserId INT;
 	
     -- Insert the contact
     INSERT INTO Contacts
@@ -30,7 +31,10 @@ BEGIN
     VALUES
     (@v_ContactId, p_userType, p_userName, p_passWord, p_salt);
 
-    SELECT LAST_INSERT_ID() AS 'UserId';
+    -- Now, grab the new user id, save it into v_UserId
+    SET @v_UserId = LAST_INSERT_ID();
+
+    SELECT @v_UserId as 'UserId', @v_ContactId as 'ContactId';
 END $$
 
 

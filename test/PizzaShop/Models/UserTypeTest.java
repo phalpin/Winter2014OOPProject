@@ -50,11 +50,11 @@ public class UserTypeTest {
      * Test of getValue method, of class UserType.
      */
     @Test
-    public void testGetValue() {
-        System.out.println("[UserTypeTest][testGetValue]");
+    public void testGetName() {
+        System.out.println("[UserTypeTest][testGetName]");
         UserType instance = UserType.Customer;
-        int expResult = 1;
-        int result = instance.getName();
+        String expResult = "Customer";
+        String result = instance.getName();
         assertEquals(expResult, result);
     }
     

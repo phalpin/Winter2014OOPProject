@@ -9,6 +9,10 @@ package PizzaShop.Data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.text.MessageFormat;
+import com.mysql.jdbc.Driver;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The Database Creation Singleton. Keeps the value nice and cached.
@@ -59,26 +63,33 @@ public class DatabaseFactory {
     public DatabaseFactory(){
         _driverType = "jdbc";
         _dbType = "mysql";
-        _ipAddress = "127.0.0.1";
+        _ipAddress = "localhost";
         _dbName = "PizzaShop";
         _port = "3306";
         _user = "root";
         _pass = "oopwinter2014";
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+        } catch (Exception ex) {
+            Logger.getLogger(DatabaseFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private String getConnectionString(){
+            return MessageFormat.format(
+                    "{0}:{1}://{2}:{3}/{4}",
+                    _driverType,
+                    _dbType,
+                    _ipAddress,
+                    _port,
+                    _dbName
+            );
+        
     }
     
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(
-                String.format(
-                        "{0}:{1}://{2}:{3}/{4}?user={5}&password={6}",
-                        _driverType,
-                        _dbType,
-                        _ipAddress,
-                        _dbName,
-                        _port,
-                        _user,
-                        _pass
-                ),
-                null
-        );
+        String connString = getConnectionString();
+        Connection con = DriverManager.getConnection(connString, _user, _pass);
+        return con;
     }
 }

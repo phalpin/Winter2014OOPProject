@@ -11,5 +11,6 @@ package PizzaShop.Models;
  * @author phalpin
  */
 public interface IDBEnum {
-    public int getName();
+    public String getName();
+    public int getValue();
 }

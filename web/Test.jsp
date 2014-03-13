@@ -4,6 +4,7 @@
     Author     : phalpin
 --%>
 
+<%@page import="PizzaShop.Resources.IActionResult"%>
 <%@page import="PizzaShop.Resources.ActionResult"%>
 <%@page import="PizzaShop.Services.UserService"%>
 <%@page import="PizzaShop.Models.User"%>
@@ -16,12 +17,12 @@
     u.setLastName("TestLastName");
     u.setHomeNumber("3396728564");
     u.setMobileNumber("4687325608");
-    u.setUsername("");
+    u.setUsername("TESTUSERNAME");
     u.setPassword("TESTING123");
     u.setSalt("TESTSALT");
     u.setType(UserType.Customer);
     UserService svc = new UserService();
-    ActionResult<User> result = svc.Create(u);
+    IActionResult<User> result = svc.Create(u);
     
 %>
 
