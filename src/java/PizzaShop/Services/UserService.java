@@ -7,7 +7,9 @@
 package PizzaShop.Services;
 
 import PizzaShop.Data.DatabaseFactory;
+import PizzaShop.Data.SqlConsts;
 import PizzaShop.Models.User;
+import PizzaShop.Models.UserType;
 import PizzaShop.Resources.ActionResult;
 import PizzaShop.Resources.ActionResultStatus;
 import PizzaShop.Resources.IActionResult;
@@ -15,6 +17,8 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -83,18 +87,32 @@ public class UserService implements IDataService<User> {
     public IActionResult<User> Read(int id) {
         ActionResult<User> result = new ActionResult<User>();
         
-        //TODO: Do some stuff in the database.
+        try {
+            //TODO: Do some stuff in the database.
+            CallableStatement cstmt = con.prepareCall("{call User_Read(?)}");
+            cstmt.setInt("p_userId", id);
+            
+            ResultSet rs = cstmt.executeQuery();
+            if(rs.next()){
+                User u = new User();
+                this.PopulateUser(rs, u);
+                result.setResult(u);
+                result.setStatus(ActionResultStatus.SUCCESS);
+                result.setMessage("Successfully created the user in the database.");                
+            }
+
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            result.setMessage(ex.getMessage());
+        }        
         
         return result;
     }
 
     @Override
     public IActionResult<User> Read(User u) {
-        ActionResult<User> result = new ActionResult<User>();
-        
-        //TODO: Do some stuff in the database.
-        
-        return result;
+        return Read(u.getId());
     }
 
     @Override
@@ -122,6 +140,29 @@ public class UserService implements IDataService<User> {
         //TODO: Do some stuff in the database.
         
         return result;
+    }
+    
+    /**
+     * Populates a user for the various methods to do something with.
+     * @param rs Reader to populate from.
+     * @param u User object to populate.
+     * @return Populated user object.
+     * @throws SQLException If the reader blows up.
+     */
+    private User PopulateUser(ResultSet rs, User u) throws SQLException{
+        u.setId(rs.getInt(SqlConsts.userId));
+        u.setContactId(rs.getInt(SqlConsts.contactId));
+        u.setFirstName(rs.getString(SqlConsts.firstName));
+        u.setMiddleName(rs.getString(SqlConsts.middleName));
+        u.setLastName(rs.getString(SqlConsts.lastName));
+        u.setHomeNumber(rs.getString(SqlConsts.homeNumber));
+        u.setMobileNumber(rs.getString(SqlConsts.mobileNumber));
+        u.setUsername(rs.getString(SqlConsts.userName));
+        u.setPassword(rs.getString(SqlConsts.passWord));
+        u.setType(UserType.values()[rs.getInt(SqlConsts.userType)-1]);
+        u.setSalt(rs.getString(SqlConsts.salt));
+        u.setSessionId(rs.getString(SqlConsts.sessionId));
+        return u;
     }
     
 }

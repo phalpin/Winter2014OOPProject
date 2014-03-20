@@ -1,4 +1,5 @@
 -- DELIMITER $$
+
 -- User Create
 DROP PROCEDURE IF EXISTS PizzaShop.User_Create $$
 CREATE PROCEDURE PizzaShop.User_Create(
@@ -36,6 +37,7 @@ BEGIN
 
     SELECT @v_UserId as 'UserId', @v_ContactId as 'ContactId';
 END $$
+-- //</editor-fold>
 
 
 
@@ -46,7 +48,7 @@ CREATE PROCEDURE PizzaShop.User_Read(
 )
 BEGIN
     -- Read in the user.
-    SELECT u.id, c.firstName, c.middleName, c.lastName, c.homeNumber, c.mobileNumber, u.userName, u.password
+    SELECT u.id as 'userid', u.contactId, c.firstName, c.middleName, c.lastName, c.homeNumber, c.mobileNumber, u.userName, u.password, u.salt, u.sessionId, u.userTypeId
     FROM Users u
     JOIN Contacts c on u.contactId = c.id
     WHERE u.id = p_userId;
@@ -104,4 +106,7 @@ BEGIN
     -- Delete the User
     DELETE FROM Users WHERE u.id = p_userId;
 END $$
+
+-- User GetUserByUsername
+
 -- DELIMITER ;
