@@ -44,7 +44,7 @@ public class UserService implements IDataService<User> {
     public IActionResult<User> Create(User u) {
         ActionResult<User> result = new ActionResult<User>();
         try {
-            //TODO: Do some stuff in the database.
+            u.EncryptPassword();
             CallableStatement cstmt = con.prepareCall("{call User_Create(?,?,?,?,?,?,?,?,?)}");
             cstmt.setString("p_firstName", u.getFirstName());
             cstmt.setString("p_middleName", u.getMiddleName());
@@ -69,17 +69,6 @@ public class UserService implements IDataService<User> {
         catch (SQLException ex) {
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        /* //For Reference.
-        IN p_firstName VARCHAR(50),
-        IN p_middleName VARCHAR(50),
-        IN p_lastName VARCHAR(50),
-        IN p_homeNumber VARCHAR(50),
-        IN p_mobileNumber VARCHAR(50),
-        IN p_userName VARCHAR(25),
-        IN p_passWord VARCHAR(100),
-        IN p_salt VARCHAR(45),
-        IN p_userType INT
-        */
         return result;
     }
 
@@ -100,10 +89,13 @@ public class UserService implements IDataService<User> {
                 result.setStatus(ActionResultStatus.SUCCESS);
                 result.setMessage("Successfully created the user in the database.");                
             }
-
+            else{
+               result.setStatus(ActionResultStatus.FAILURE);
+            }
         }
         catch (SQLException ex) {
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            result.setStatus(ActionResultStatus.FAILURE);
             result.setMessage(ex.getMessage());
         }        
         
@@ -119,25 +111,54 @@ public class UserService implements IDataService<User> {
     public IActionResult<User> Update(User u) {
         ActionResult<User> result = new ActionResult<User>();
         
-        //TODO: Do some stuff in the database.
+        try{
+            CallableStatement cstmt = con.prepareCall("{call User_Update(?,?,?,?,?,?,?,?,?,?)}");
+            cstmt.setInt("p_userId", u.getId());
+            cstmt.setString("p_firstName", u.getFirstName());
+            cstmt.setString("p_middleName", u.getMiddleName());
+            cstmt.setString("p_lastName", u.getLastName());
+            cstmt.setString("p_homeNumber", u.getHomeNumber());
+            cstmt.setString("p_mobileNumber", u.getMobileNumber());
+            cstmt.setString("p_userName", u.getUsername());
+            cstmt.setString("p_passWord", u.getPassword());
+            cstmt.setString("p_salt", u.getSalt());
+            cstmt.setInt("p_userType", u.getType().getValue());
+            ResultSet rs = cstmt.executeQuery();
+            result.setResult(u);
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            result.setMessage(ex.getMessage());
+        }
         
         return result;
     }
 
     @Override
     public IActionResult<Boolean> Delete(User u) {
-        ActionResult<Boolean> result = new ActionResult<Boolean>();
-        
-        //TODO: Do some stuff in the database.
-        
-        return result;
+        return Delete(u.getId());
     }
 
     @Override
     public IActionResult<Boolean> Delete(int id) {
         ActionResult<Boolean> result = new ActionResult<Boolean>();
         
-        //TODO: Do some stuff in the database.
+        try{
+            CallableStatement cstmt = con.prepareCall("{call User_Delete(?)}");
+            cstmt.setInt("p_userId", id);
+            ResultSet rs = cstmt.executeQuery();
+            result.setResult(true);
+            int deletedContactId = 0;
+            if(rs.next()){
+                deletedContactId = rs.getInt("Deleted");
+            }
+            
+            Object r = new Object();
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            result.setMessage(ex.getMessage());
+        }
         
         return result;
     }

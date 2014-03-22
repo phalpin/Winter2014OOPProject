@@ -23,6 +23,10 @@ pizzaShopApp.config(['$routeProvider',
             when('/Pizzas',{
                 templateUrl: 'app/pizzas/pizzas.html',
                 controller: 'PizzasCtrl'
+            }).
+            when('/Pizzas/:id',{
+                templateUrl: 'app/pizzas/pizza.html',
+                controller: 'PizzaCtrl'
             })
     }
 ]);

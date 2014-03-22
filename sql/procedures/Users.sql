@@ -98,13 +98,17 @@ CREATE PROCEDURE PizzaShop.User_Delete(
 )
 BEGIN
     DECLARE v_contactId INT;
-    SET v_contactId = (SELECT u.contactId FROM Users u WHERE u.contactId = @v_contactId);
+    SET @v_contactId = (SELECT Users.contactId FROM Users WHERE Users.Id = p_userId LIMIT 1);
+    
+    -- Delete the User
+    DELETE FROM Users WHERE Users.Id = p_userId;
 
+    -- SELECT @v_contactId;
     -- Delete the Contact
     DELETE FROM Contacts WHERE Contacts.id = @v_contactId;
 
-    -- Delete the User
-    DELETE FROM Users WHERE u.id = p_userId;
+    SELECT @v_contactId as 'Deleted';
+
 END $$
 
 -- User GetUserByUsername

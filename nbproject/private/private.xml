@@ -3,15 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Models/Contact.java</file>
-            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/test/PizzaShop/Services/UserServiceTest.java</file>
             <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Models/UserType.java</file>
             <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/sql/procedures/Users.sql</file>
-            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Models/User.java</file>
             <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Resources/ActionResultStatus.java</file>
             <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Services/IDataService.java</file>
-            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Data/SqlConsts.java</file>
             <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Services/UserService.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/test/PizzaShop/Models/UserTest.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/test/PizzaShop/Models/UserTestHelper.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Models/Contact.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Models/User.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/test/PizzaShop/Models/Integration/UserServiceTest.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Data/SqlConsts.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Data/DatabaseFactory.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/app.js</file>
             <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Consts.java</file>
         </group>
     </open-files>
