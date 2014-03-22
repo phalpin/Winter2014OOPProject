@@ -90,7 +90,6 @@ public class UserServiceTest {
     /**
      * Test of Delete method, of class UserService.
      */
-    /*
     @Test
     public void testDelete_int() {
         System.out.println("Delete");
@@ -98,6 +97,4 @@ public class UserServiceTest {
         assertTrue(_svc.Delete(start.getId()).getResult());
         assertEquals(ActionResultStatus.FAILURE, _svc.Read(start).getStatus());
     }
-    */
-    
 }
