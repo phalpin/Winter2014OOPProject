@@ -56,9 +56,11 @@ public class DatabaseFactory {
     private final String _port;
     private final String _user;
     private final String _pass;
+    private Connection _con;
     
     /**
      * Constructor - need to get this shoehorned into a config file somehow.
+     * @throws java.sql.SQLException
      */
     public DatabaseFactory(){
         _driverType = "jdbc";
@@ -70,9 +72,11 @@ public class DatabaseFactory {
         _pass = "oopwinter2014";
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
+            _con = DriverManager.getConnection(getConnectionString(), _user, _pass);
         } catch (Exception ex) {
             Logger.getLogger(DatabaseFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     private String getConnectionString(){
@@ -88,8 +92,11 @@ public class DatabaseFactory {
     }
     
     public Connection getConnection() throws SQLException {
+        return _con;
+        /*
         String connString = getConnectionString();
         Connection con = DriverManager.getConnection(connString, _user, _pass);
         return con;
+        */
     }
 }
