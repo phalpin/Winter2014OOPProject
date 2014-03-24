@@ -21,6 +21,7 @@ public class Pizza extends DBEntity implements IPriceableEntity {
     public Pizza(PizzaSize size, PizzaType type){
         _size = size;
         _type = type;
+        _toppings = new ArrayList<PizzaTopping>();
     }
     
     public PizzaSize getSize(){
@@ -37,6 +38,22 @@ public class Pizza extends DBEntity implements IPriceableEntity {
     
     public void setType(PizzaType type){
         _type = type;
+    }
+    
+    public void addTopping(PizzaTopping topping){
+        _toppings.add(topping);
+    }
+    
+    public void removeTopping(PizzaTopping topping){
+        _toppings.remove(topping);
+    }
+    
+    public ArrayList<PizzaTopping> getToppings(){
+        return _toppings;
+    }
+    
+    public boolean hasTopping(PizzaTopping t){
+        return _toppings.contains(t);
     }
     
     @Override

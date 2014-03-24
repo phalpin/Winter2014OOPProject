@@ -7,7 +7,7 @@
 package PizzaShop.Models.Integration;
 
 import PizzaShop.Models.User;
-import PizzaShop.Models.UserTestHelper;
+import TestHelpers.UserTestHelper;
 import PizzaShop.Resources.ActionResultStatus;
 import PizzaShop.Resources.IActionResult;
 import PizzaShop.Services.UserService;
@@ -24,10 +24,9 @@ import static org.junit.Assert.*;
  */
 public class UserServiceTest {
     
-    private final UserService _svc;
+    private final UserService _svc = new UserService();
     
     public UserServiceTest() {
-        _svc = new UserService();
     }
 
     /**

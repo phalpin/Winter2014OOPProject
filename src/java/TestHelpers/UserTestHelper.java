@@ -4,20 +4,25 @@
  * and open the template in the editor.
  */
 
-package PizzaShop.Models;
+package TestHelpers;
 
+import PizzaShop.Models.User;
+import PizzaShop.Models.UserType;
 import static org.junit.Assert.assertEquals;
+import org.junit.Ignore;
 
 /**
  *
  * @author phalpin
  */
+@Ignore
 public class UserTestHelper {
         
     /**
      * Generates a user to store to DB
      * @return A populated user.
      */
+    @Ignore
     public static User generateUser(){
         User u = new User();
         u.setFirstName("Test");
