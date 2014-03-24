@@ -112,7 +112,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PizzaShop`.`PizzaSizes` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `PizzaSize` INT NULL,
+  `name` VARCHAR(45) NULL,
+  `cost` DOUBLE NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
@@ -123,7 +124,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PizzaShop`.`PizzaTypes` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `PizzaType` VARCHAR(45) NULL,
+  `name` VARCHAR(45) NULL,
+  `cost` DOUBLE NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
@@ -135,6 +137,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `PizzaShop`.`Toppings` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Topping` VARCHAR(45) NULL,
+  `Cost` DOUBLE NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
@@ -218,7 +221,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `PizzaShop`.`Beverages` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `price` DOUBLE NULL,
+  `cost` DOUBLE NULL,
+  `size` DOUBLE NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
@@ -230,7 +234,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `PizzaShop`.`Assorted` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `price` DOUBLE NULL,
+  `cost` DOUBLE NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
