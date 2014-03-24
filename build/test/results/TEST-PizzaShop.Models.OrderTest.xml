@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Phillips-MacBook-Pro-2.local" name="PizzaShop.Models.UserTypeTest" skipped="0" tests="3" time="0.068" timestamp="2014-03-24T03:23:07">
+<testsuite errors="0" failures="0" hostname="Phillips-MacBook-Pro-2.local" name="PizzaShop.Models.OrderTest" skipped="0" tests="7" time="0.07" timestamp="2014-03-24T03:23:04">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="project.name" value="PizzaShop" />
@@ -71,7 +71,7 @@
     <property name="libs.Comet-GlassFish-v3.javadoc" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner PizzaShop.Models.UserTypeTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/phalpin/NetBeansProjects/PizzaShop/build/test/results/TEST-PizzaShop.Models.UserTypeTest.xml crashfile=/Users/phalpin/NetBeansProjects/PizzaShop/build/junitvmwatcher2845324703224431847.properties propsfile=/Users/phalpin/NetBeansProjects/PizzaShop/build/junit6107278952858955024.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner PizzaShop.Models.OrderTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/phalpin/NetBeansProjects/PizzaShop/build/test/results/TEST-PizzaShop.Models.OrderTest.xml crashfile=/Users/phalpin/NetBeansProjects/PizzaShop/build/junitvmwatcher2041146860980468902.properties propsfile=/Users/phalpin/NetBeansProjects/PizzaShop/build/junit6547188850937235954.properties" />
     <property name="build.classes.dir" value="build/web/WEB-INF/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="ap.supported.internal" value="true" />
@@ -460,12 +460,20 @@
     <property name="war.ear.name" value="PizzaShop.war" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/Applications/NetBeans/NetBeans 7.4.app/Contents/Resources/NetBeans/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="PizzaShop.Models.UserTypeTest" name="testGetName" time="0.003" />
-  <testcase classname="PizzaShop.Models.UserTypeTest" name="testValues" time="0.002" />
-  <testcase classname="PizzaShop.Models.UserTypeTest" name="testValueOf" time="0.0" />
-  <system-out><![CDATA[[UserTypeTest][testGetName]
-[UserTypeTest][testValues]
-[UserTypeTest][testValueOf]
+  <testcase classname="PizzaShop.Models.OrderTest" name="testHasPizza" time="0.004" />
+  <testcase classname="PizzaShop.Models.OrderTest" name="testAddSide" time="0.0" />
+  <testcase classname="PizzaShop.Models.OrderTest" name="testHasSide" time="0.0" />
+  <testcase classname="PizzaShop.Models.OrderTest" name="testCost" time="0.001" />
+  <testcase classname="PizzaShop.Models.OrderTest" name="testAddPizza" time="0.0" />
+  <testcase classname="PizzaShop.Models.OrderTest" name="testRemovePizza" time="0.0" />
+  <testcase classname="PizzaShop.Models.OrderTest" name="testRemoveSide" time="0.0" />
+  <system-out><![CDATA[[OrderTest][testHasPizza]
+[OrderTest][testAddSide]
+[OrderTest][testHasSide]
+[OrderTest][testCost]
+[OrderTest][testAddPizza]
+[OrderTest][testRemovePizza]
+[OrderTest][testRemoveSide]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

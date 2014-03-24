@@ -12,6 +12,22 @@ package PizzaShop.Models;
  */
 public class Beverage extends Side{
     private double _size;
+    private String _name;
+    
+    public Beverage(String name, double size, double price){
+        super(price);
+        _size = size;
+        _name = name;
+    }
+    
+    
+    public String getName(){
+        return _name;
+    }
+    
+    public void setName(String name){
+        _name = name;
+    }
     
     public double getSize(){
         return _size;

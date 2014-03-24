@@ -11,4 +11,28 @@ package PizzaShop.Models;
  * @author phalpin
  */
 public class AssortedSide extends Side {
+    private String _name;
+    private int _count;
+    
+    public AssortedSide(String name, int count, double cost){
+        super(cost);
+        _name = name;
+        _count = count;
+    }
+    
+    public String getName(){
+        return _name;
+    }
+    
+    public void setName(String name){
+        _name = name;
+    }
+    
+    public int getCount(){
+        return _count;
+    }
+    
+    public void setCount(int count){
+        _count = count;
+    }
 }

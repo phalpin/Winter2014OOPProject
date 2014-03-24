@@ -34,7 +34,7 @@ public class UserServiceTest {
      */
     @Test
     public void testCreate() {
-        System.out.println("Create");
+        System.out.println("[UserServiceTest][testCreate]");
         User u = UserTestHelper.generateUser();
         IActionResult<User> result = _svc.Create(u);
         assertEquals(ActionResultStatus.SUCCESS, result.getStatus());
@@ -45,7 +45,7 @@ public class UserServiceTest {
      */
     @Test
     public void testRead_int() {
-        System.out.println("Read");
+        System.out.println("[UserServiceTest][testRead_int]");
         User expected = _svc.Create(UserTestHelper.generateUser()).getResult();
         User result = _svc.Read(expected.getId()).getResult();
         UserTestHelper.assertUser(expected, result);
@@ -56,7 +56,7 @@ public class UserServiceTest {
      */
     @Test
     public void testRead_User() {
-        System.out.println("Read");
+        System.out.println("[UserServiceTest][testRead_User]");
         User expected = _svc.Create(UserTestHelper.generateUser()).getResult();
         User result = _svc.Read(expected).getResult();
         UserTestHelper.assertUser(expected, result);
@@ -67,7 +67,7 @@ public class UserServiceTest {
      */
     @Test
     public void testUpdate() {
-        System.out.println("Update");
+        System.out.println("[UserServiceTest][testUpdate]");
         User start = _svc.Create(UserTestHelper.generateUser()).getResult();
         start.setFirstName("Updated");
         User expected = _svc.Update(start).getResult();
@@ -80,7 +80,7 @@ public class UserServiceTest {
      */
     @Test
     public void testDelete_User() {
-        System.out.println("Delete");
+        System.out.println("[UserServiceTest][testDelete_User]");
         User start = _svc.Create(UserTestHelper.generateUser()).getResult();
         assertTrue(_svc.Delete(start).getResult());
         assertEquals(ActionResultStatus.FAILURE, _svc.Read(start).getStatus());
@@ -91,7 +91,7 @@ public class UserServiceTest {
      */
     @Test
     public void testDelete_int() {
-        System.out.println("Delete");
+        System.out.println("[UserServiceTest][testDelete_int]");
         User start = _svc.Create(UserTestHelper.generateUser()).getResult();
         assertTrue(_svc.Delete(start.getId()).getResult());
         assertEquals(ActionResultStatus.FAILURE, _svc.Read(start).getStatus());

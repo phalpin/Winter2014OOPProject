@@ -13,6 +13,10 @@ package PizzaShop.Models;
 public abstract class Side extends DBEntity implements IPriceableEntity {
     private double _cost;
     
+    public Side(double cost){
+        _cost = cost;
+    }
+    
     @Override
     public double getCost(){
         return _cost;
