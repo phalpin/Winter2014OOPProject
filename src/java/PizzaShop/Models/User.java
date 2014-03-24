@@ -7,6 +7,7 @@
 
 package PizzaShop.Models;
 
+import java.util.ArrayList;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 /**
@@ -73,6 +74,22 @@ public class User extends Contact {
     public boolean getIsEncrypted(){
         return isEncrypted;
     }
+    
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+    
+    public ArrayList<Order> getOrders(){
+        return orders;
+    }
+    
+    public void setOrders(ArrayList<Order> orders){
+        this.orders = orders;
+    }
     //</editor-fold>
     
     /**
@@ -104,5 +121,7 @@ public class User extends Contact {
     private String password;
     private String salt;
     private boolean isEncrypted;
+    private Session session;
+    private ArrayList<Order> orders;
     
 }

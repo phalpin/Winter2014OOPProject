@@ -17,8 +17,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -184,6 +183,11 @@ public class UserService implements IDataService<User> {
         u.setSalt(rs.getString(SqlConsts.salt));
         u.setSessionId(rs.getString(SqlConsts.sessionId));
         return u;
+    }
+
+    @Override
+    public IActionResult<ArrayList<User>> ReadAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

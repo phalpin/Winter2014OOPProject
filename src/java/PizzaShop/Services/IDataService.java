@@ -7,6 +7,7 @@
 package PizzaShop.Services;
 
 import PizzaShop.Resources.IActionResult;
+import java.util.ArrayList;
 
 /**
  * Determines the standard structure of a service.
@@ -60,4 +61,11 @@ public interface IDataService<T> {
      * @return ActionResult containing a boolean result.
      */
     public IActionResult<Boolean> Delete(int id);
+    
+    /**
+     * Reads all in the database for a given item. WARNING: Use with caution. Make sure to check usertype.
+     * @precondition None
+     * @return ActionResult containing the list of items from the query.
+     */
+    public IActionResult<ArrayList<T>> ReadAll();
 }
