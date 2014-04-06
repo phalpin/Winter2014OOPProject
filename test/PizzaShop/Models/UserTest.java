@@ -33,5 +33,13 @@ public class UserTest {
         u.EncryptPassword();
         assertNotSame(prePassword, u.getPassword());
         assertTrue(u.CheckPassword(prePassword));
+        
+        User utwo = UserTestHelper.generateUser();
+        String prePasswordTwo = utwo.getPassword();
+        u.EncryptPassword();
+        assertNotSame(prePasswordTwo, u.getPassword());
+        assertTrue(u.CheckPassword(prePasswordTwo));
+        
+        assertTrue(u.CheckPassword(prePassword));
     }
 }

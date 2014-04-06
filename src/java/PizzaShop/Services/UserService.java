@@ -162,6 +162,32 @@ public class UserService implements IDataService<User> {
         return result;
     }
     
+    public IActionResult<User> ReadByUserName(String username){
+        ActionResult<User> result = new ActionResult<User>();
+        
+        try{
+            CallableStatement cstmt = con.prepareCall("{call User_ReadByUserName(?)}");
+            cstmt.setString("p_userName", username);
+            ResultSet rs = cstmt.executeQuery();
+            if(rs.next()){
+                User u = new User();
+                this.PopulateUser(rs, u);
+                result.setStatus(ActionResultStatus.SUCCESS);
+                result.setResult(u);
+            }
+            else{
+                result.setStatus(ActionResultStatus.FAILURE);
+                result.setMessage("Unable to find a user by username");
+            }
+            
+        }
+        catch(SQLException ex){
+            result.setStatus(ActionResultStatus.FAILURE);
+            result.setMessage("Failed to retrieve user" + ex.getMessage());
+        }
+        return result;
+    }
+    
     /**
      * Populates a user for the various methods to do something with.
      * @param rs Reader to populate from.

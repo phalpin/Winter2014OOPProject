@@ -7,16 +7,18 @@
 package PizzaShop.Models.Integration;
 
 import PizzaShop.Models.User;
-import TestHelpers.UserTestHelper;
+import PizzaShop.Models.UserType;
+import PizzaShop.Resources.ActionResult;
 import PizzaShop.Resources.ActionResultStatus;
 import PizzaShop.Resources.IActionResult;
 import PizzaShop.Services.UserService;
+import TestHelpers.UserTestHelper;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -95,5 +97,32 @@ public class UserServiceTest {
         User start = _svc.Create(UserTestHelper.generateUser()).getResult();
         assertTrue(_svc.Delete(start.getId()).getResult());
         assertEquals(ActionResultStatus.FAILURE, _svc.Read(start).getStatus());
+    }
+    
+    @Test
+    public void testReadByUsername(){
+        System.out.println("[UserServiceTest][testReadByUsername]");
+        IActionResult<User> userResult = _svc.ReadByUserName("phalpin");
+        assertEquals(ActionResultStatus.SUCCESS, userResult.getStatus());
+        User phalpin = userResult.getResult();
+        
+        assertEquals("phalpin", phalpin.getUsername());
+        assertEquals("Phillip", phalpin.getFirstName());
+        assertEquals("Daniel", phalpin.getMiddleName());
+        assertEquals("Halpin", phalpin.getLastName());
+    }
+    
+    @Test
+    public void testCreatePassworD(){
+        User u = new User();
+        u.setFirstName("Phillip");
+        u.setMiddleName("Daniel");
+        u.setLastName("Halpin");
+        u.setMobileNumber("9548957704");
+        u.setHomeNumber("9547539744");
+        u.setPassword("casnoekal1");
+        u.setUsername("phalpin");
+        u.setType(UserType.VIP);
+        _svc.Create(u);
     }
 }

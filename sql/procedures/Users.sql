@@ -111,6 +111,16 @@ BEGIN
 
 END $$
 
--- User GetUserByUsername
+-- User ReadByUserName
+DROP PROCEDURE IF EXISTS PizzaShop.User_ReadByUserName $$
+CREATE PROCEDURE PizzaShop.User_ReadByUserName(
+    IN p_userName VARCHAR(25)
+)
+BEGIN
+	SELECT u.id as 'userid', u.contactId, c.firstName, c.middleName, c.lastName, c.homeNumber, c.mobileNumber, u.userName, u.password, u.salt, u.sessionId, u.userTypeId
+    FROM Users u
+    JOIN Contacts c on u.contactId = c.id
+    WHERE u.username = p_userName;
+END $$
 
 -- DELIMITER ;
