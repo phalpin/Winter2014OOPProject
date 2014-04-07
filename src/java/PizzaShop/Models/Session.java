@@ -14,13 +14,22 @@ import java.util.UUID;
  * @author phalpin
  */
 public class Session extends DBEntity {
-    private String _token;
-    private Date _startedOn;
+    private final String _token;
+    private final Date _startedOn;
+    private final int _userId;
     
     
-    public Session(){
+    public Session(User u){
         _token = UUID.randomUUID().toString();
         _startedOn = new Date();
+        _userId = u.getId();
+    }
+    
+    public Session(int id, String token, Date startedOn, int userId){
+        this.setId(id);
+        _token = token;
+        _startedOn = startedOn;
+        _userId = userId;
     }
     
     public String getToken() {
@@ -29,6 +38,10 @@ public class Session extends DBEntity {
 
     public Date getStartedOn() {
         return _startedOn;
+    }
+    
+    public int getUserId(){
+        return _userId;
     }
     
 }

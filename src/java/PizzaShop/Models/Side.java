@@ -7,7 +7,7 @@
 package PizzaShop.Models;
 
 /**
- *
+ * Side - exists as an abstract class to determine side objects that you can order along with your pizza!
  * @author phalpin
  */
 public abstract class Side extends DBEntity implements IPriceableEntity {
@@ -17,6 +17,11 @@ public abstract class Side extends DBEntity implements IPriceableEntity {
         _cost = cost;
     }
     
+    
+    /**
+     * 
+     * @return 
+     */
     @Override
     public double getCost(){
         return _cost;

@@ -15,6 +15,4 @@ import org.codehaus.jettison.json.JSONException;
  */
 public interface ISerializable<T> {
     public String toJson();
-    public void fromJson(String json) throws JSONException;
-    
 }

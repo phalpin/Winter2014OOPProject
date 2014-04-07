@@ -48,6 +48,11 @@ public class ActionResult<T> implements IActionResult<T> {
     public String getMessage() {
         return _msg;
     }
+    
+    @Override
+    public boolean isSuccess(){
+        return _status == ActionResultStatus.SUCCESS;
+    }
     //</editor-fold>
     
     

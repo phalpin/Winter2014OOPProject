@@ -7,6 +7,7 @@
 package PizzaShop.Models;
 
 
+import TestHelpers.PizzaTestHelper;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -149,7 +150,16 @@ public class OrderTest {
         o.removeSide(s1);
         expectedCost -= s1.getCost() + s2.getCost();
         assertEquals(expectedCost, o.getCost(), 0.01);
-        
+    }
+    
+    
+    @Test
+    public void testSerialize(){
+        System.out.println("[OrderTest][testSerialize]");
+        Pizza p = PizzaTestHelper.getPizza();
+        String serializationResult = p.toJson();
+        String expected = "{\"_size\":\"Large\",\"_type\":\"Italian\",\"_toppings\":[{\"_name\":\"Pepperoni\",\"_cost\":0.5,\"id\":0},{\"_name\":\"Sausage\",\"_cost\":0.75,\"id\":0},{\"_name\":\"Mushroom\",\"_cost\":0.8,\"id\":0}],\"id\":0}";
+        assertEquals(expected, serializationResult);
     }
     
 }

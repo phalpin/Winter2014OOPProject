@@ -6,6 +6,8 @@
 
 package PizzaShop.Models;
 
+import PizzaShop.Resources.GsonManager;
+
 /**
  * Placeholder for assorted sides.
  * @author phalpin
@@ -34,5 +36,9 @@ public class AssortedSide extends Side {
     
     public void setCount(int count){
         _count = count;
+    }
+    
+    public static AssortedSide fromJson(String json){
+        return GsonManager.GO.fromJson(json, AssortedSide.class);
     }
 }

@@ -6,9 +6,14 @@
 
 package PizzaShop.Services;
 
+import PizzaShop.Data.DatabaseFactory;
 import PizzaShop.Models.Order;
 import PizzaShop.Resources.IActionResult;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,6 +21,17 @@ import java.util.ArrayList;
  */
 public class OrderService implements IDataService<Order> {
 
+    private Connection con = null;
+    
+    public OrderService(){
+        try{
+            con = DatabaseFactory.getInstance().getConnection();
+        }
+        catch(SQLException ex){
+            Logger.getLogger(OrderService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @Override
     public IActionResult<Order> Create(Order obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -26,16 +26,28 @@ public enum PizzaSize implements IDBEnum, IPriceableEntity {
     private final String _name;
     private final double _cost;
 
+    /**
+     * Method for retrieving the name (string representation) of this particular Pizza Size.
+     * @return The string representation of the name of this particular pizza size.
+     */
     @Override
     public String getName() {
         return _name;
     }
 
+    /**
+     * Method for retrieving the value (AKA, DB ID) for this particular Pizza Size.
+     * @return the integer database ID for this particular Pizza Size.
+     */
     @Override
     public int getValue() {
         return _value;
     }
     
+    /**
+     * Method for retrieving the cost for this particular Pizza Size.
+     * @return double Cost.
+     */
     @Override
     public double getCost(){
         return _cost;

@@ -6,6 +6,7 @@
 
 package PizzaShop.Models;
 
+import PizzaShop.Resources.GsonManager;
 import flexjson.JSONSerializer;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -73,14 +74,8 @@ public class Contact extends DBEntity implements ISerializable {
         return r.serialize(this);
     }
 
-    @Override
-    public void fromJson(String json) throws JSONException {
-        JSONObject j = new JSONObject(json);
-        this.firstName = j.getString("FirstName");
-        this.middleName = j.getString("MiddleName");
-        this.lastName = j.getString("LastName");
-        this.homeNumber = j.getString("HomeNumber");
-        this.mobileNumber = j.getString("HomeNumber");
+    public static Contact fromJson(String json){
+        return GsonManager.GO.fromJson(json, Contact.class);
     }
     
     

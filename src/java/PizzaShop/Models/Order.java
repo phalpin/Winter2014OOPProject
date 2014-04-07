@@ -6,13 +6,19 @@
 
 package PizzaShop.Models;
 
+import PizzaShop.Resources.GsonManager;
+import flexjson.JSONSerializer;
 import java.util.ArrayList;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+import com.google.gson.*;
 
 /**
  *
  * @author phalpin
  */
-public class Order extends DBEntity implements IPriceableEntity{
+public class Order extends DBEntity implements IPriceableEntity, ISerializable{
 
     private ArrayList<Pizza> _pizzas;
     private ArrayList<Side> _sides;
@@ -67,6 +73,15 @@ public class Order extends DBEntity implements IPriceableEntity{
         }
         
         return total;
+    }
+
+    @Override
+    public String toJson() {
+        return GsonManager.GO.toJson(this);
+    }
+
+    public static Order fromJson(String json){
+        return GsonManager.GO.fromJson(json, Order.class);
     }
     
 }

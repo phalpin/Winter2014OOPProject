@@ -207,7 +207,7 @@ public class UserService implements IDataService<User> {
         u.setPassword(rs.getString(SqlConsts.passWord));
         u.setType(UserType.values()[rs.getInt(SqlConsts.userType)-1]);
         u.setSalt(rs.getString(SqlConsts.salt));
-        u.setSessionId(rs.getString(SqlConsts.sessionId));
+        u.setSessionId(rs.getInt(SqlConsts.sessionId));
         return u;
     }
 

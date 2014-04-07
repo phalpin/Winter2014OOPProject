@@ -6,6 +6,8 @@
 
 package PizzaShop.Models;
 
+import PizzaShop.Resources.GsonManager;
+
 /**
  *
  * @author phalpin
@@ -35,5 +37,9 @@ public class Beverage extends Side{
     
     public void setSize(double size){
         _size = size;
+    }
+    
+    public static Beverage fromJson(String json){
+        return GsonManager.GO.fromJson(json, Beverage.class);
     }
 }

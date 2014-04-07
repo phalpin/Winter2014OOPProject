@@ -7,10 +7,11 @@
 package PizzaShop.Data;
 
 /**
- *
- * @author phalpin
+ * SQL constants for the application to use when calling stored procedures.
  */
 public class SqlConsts {
+    
+    //<editor-fold desc="User SQL Constants.">
     public static final String userId = "userId";
     public static final String contactId = "contactId";
     public static final String firstName = "firstName";
@@ -23,4 +24,7 @@ public class SqlConsts {
     public static final String salt = "salt";
     public static final String userType = "userTypeId";
     public static final String sessionId = "sessionId";
+    //</editor-fold>
+    
+    
 }

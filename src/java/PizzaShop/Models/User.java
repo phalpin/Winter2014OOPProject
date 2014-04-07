@@ -35,14 +35,6 @@ public class User extends Contact {
         this.type = type;
     }
 
-    public String getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -90,6 +82,14 @@ public class User extends Contact {
     public void setOrders(ArrayList<Order> orders){
         this.orders = orders;
     }
+    
+    public int getSessionId(){
+        return sessionId;
+    }
+    
+    public void setSessionId(int sessionId){
+        this.sessionId = sessionId;
+    }
     //</editor-fold>
     
     /**
@@ -115,8 +115,8 @@ public class User extends Contact {
     }
     
     private int contactId;
+    private int sessionId;
     private UserType type;
-    private String sessionId;
     private String username;
     private String password;
     private String salt;

@@ -19,4 +19,6 @@ public interface IActionResult<T> {
     
     public void setMessage(String msg);
     public String getMessage();
+    
+    public boolean isSuccess();
 }
