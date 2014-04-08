@@ -66,10 +66,5 @@ public class OrderService implements IDataService<Order> {
     public IActionResult<Boolean> Delete(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public IActionResult<ArrayList<Order>> ReadAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

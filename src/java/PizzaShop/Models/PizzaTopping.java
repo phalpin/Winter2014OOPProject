@@ -21,6 +21,8 @@ public class PizzaTopping extends DBEntity implements IPriceableEntity{
         _cost = cost;
     }
     
+    public PizzaTopping(){}
+    
     @Override
     public double getCost() {
         return _cost;

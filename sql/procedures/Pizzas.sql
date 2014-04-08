@@ -28,9 +28,26 @@ BEGIN
     SELECT * FROM Pizzas where id=p_pizzaId;
 
     -- Read in the Toppings.
-    SELECT * FROM PizzaToppings
+    SELECT Toppings.* FROM PizzaToppings
     JOIN Toppings on Toppings.id = PizzaToppings.toppingId
     WHERE PizzaToppings.pizzaId = p_pizzaId;
+END $$
+
+
+-- Pizza Update
+DROP PROCEDURE IF EXISTS PizzaShop.Pizza_Update $$
+CREATE PROCEDURE PizzaShop.Pizza_Update(
+    IN p_pizzaId INT,
+    IN p_pizzaSizeId INT,
+    IN p_pizzaTypeId INT,
+    IN p_orderId INT
+)
+BEGIN
+    UPDATE Pizzas p
+    SET p.pizzaSizeId = p_pizzaSizeId,
+        p.pizzaTypeId = p_pizzaTypeId,
+        p.orderId = p_orderId
+    WHERE p.id = p_pizzaId;
 END $$
 
 -- Pizza Delete
@@ -55,6 +72,15 @@ CREATE PROCEDURE PizzaShop.Pizza_AddTopping(
 )
 BEGIN
     INSERT INTO PizzaToppings VALUES (p_pizzaId, p_toppingId);
+END $$
+
+-- Pizza RemoveTopping
+DROP PROCEDURE IF EXISTS PizzaShop.Pizza_RemoveTopping $$
+CREATE PROCEDURE PizzaShop.Pizza_RemoveTopping(
+    IN p_pizzaId INT
+)
+BEGIN
+    DELETE FROM PizzaToppings WHERE PizzaToppings.pizzaId = p_pizzaId;
 END $$
 
 -- DELIMITER ;

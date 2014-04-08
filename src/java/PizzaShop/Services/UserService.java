@@ -210,10 +210,5 @@ public class UserService implements IDataService<User> {
         u.setSessionId(rs.getInt(SqlConsts.sessionId));
         return u;
     }
-
-    @Override
-    public IActionResult<ArrayList<User>> ReadAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

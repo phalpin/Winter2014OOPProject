@@ -54,6 +54,10 @@ public class ActionResult<T> implements IActionResult<T> {
         return _status == ActionResultStatus.SUCCESS;
     }
     //</editor-fold>
+
+    public void setMessage(String an_error_occurred, Exception ex) {
+        _msg = an_error_occurred + ": " + ex.getMessage();
+    }
     
     
 }

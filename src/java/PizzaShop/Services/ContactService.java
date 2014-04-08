@@ -61,10 +61,5 @@ public class ContactService implements IDataService<Contact> {
     public IActionResult<Boolean> Delete(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public IActionResult<ArrayList<Contact>> ReadAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

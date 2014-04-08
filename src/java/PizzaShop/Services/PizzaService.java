@@ -9,8 +9,11 @@ package PizzaShop.Services;
 import PizzaShop.Data.DatabaseFactory;
 import PizzaShop.Data.ServiceFactory;
 import PizzaShop.Models.Pizza;
+import PizzaShop.Models.PizzaSize;
 import PizzaShop.Models.PizzaTopping;
+import PizzaShop.Models.PizzaType;
 import PizzaShop.Resources.ActionResult;
+import PizzaShop.Resources.ActionResultStatus;
 import PizzaShop.Resources.IActionResult;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -81,20 +84,32 @@ public class PizzaService implements IDataService<Pizza> {
         try{
             CallableStatement cstmt = con.prepareCall("{Call Pizza_Read(?)}");
             cstmt.setInt("p_pizzaId", id);
-            ResultSet rs = cstmt.executeQuery();
             
+            //Populate the Pizza Object.
+            ResultSet rs = cstmt.getResultSet();
             if(rs.next()){
-                
+                p.setId(rs.getInt("id"));
+                p.setSize(PizzaSize.values()[rs.getInt("pizzaSizeId")]);
+                p.setType(PizzaType.values()[rs.getInt("pizzaTypeId")]);
             }
             
-            if(rs.next()){
-                
+            //Get the Toppings.
+            rs = cstmt.getResultSet();
+            while(rs.next()){
+                //public PizzaTopping(String name, double cost)
+                PizzaTopping pt = new PizzaTopping();
+                pt.setId(rs.getInt("id"));
+                pt.setCost(rs.getDouble("Cost"));
+                pt.setName(rs.getString("Topping"));
+                p.addTopping(pt);
             }
             
-            
+            result.setStatus(ActionResultStatus.SUCCESS);
+            result.setResult(p);
         }
         catch(Exception ex){
-            
+            result.setStatus(ActionResultStatus.FAILURE);
+            result.setMessage("An error occurred reading the pizza.", ex);
         }
         
         return result;
@@ -102,27 +117,37 @@ public class PizzaService implements IDataService<Pizza> {
 
     @Override
     public IActionResult<Pizza> Read(Pizza obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Read(obj.getId());
     }
 
     @Override
     public IActionResult<Pizza> Update(Pizza obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ActionResult<Pizza>();
+        //TODO: Maybe implement later. No time atm.
     }
 
     @Override
     public IActionResult<Boolean> Delete(Pizza obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Delete(obj.getId());
     }
 
     @Override
     public IActionResult<Boolean> Delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public IActionResult<ArrayList<Pizza>> ReadAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ActionResult<Boolean> result = new ActionResult<Boolean>();
+        
+        try{
+            CallableStatement cstmt = con.prepareCall("{Call Pizza_Delete(?)}");
+            cstmt.setInt("p_pizzaId", id);
+            cstmt.executeQuery();
+            result.setStatus(ActionResultStatus.SUCCESS);
+            result.setResult(true);
+        }
+        catch(Exception ex){
+            result.setMessage("Failed to delete the pizza.", ex);
+            result.setStatus(ActionResultStatus.FAILURE);
+        }
+        
+        return result;
     }
     
 }
