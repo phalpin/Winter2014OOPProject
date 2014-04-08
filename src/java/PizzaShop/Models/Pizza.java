@@ -19,6 +19,8 @@ public class Pizza extends DBEntity implements IPriceableEntity, ISerializable<P
     private PizzaType _type;
     private ArrayList<PizzaTopping> _toppings;
 
+    public Pizza(){ }
+    
     public Pizza(PizzaSize size, PizzaType type){
         _size = size;
         _type = type;

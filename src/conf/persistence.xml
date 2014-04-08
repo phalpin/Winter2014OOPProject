@@ -6,6 +6,16 @@
     <class>PizzaShop.Resources.Users</class>
     <class>PizzaShop.Resources.Contacts</class>
     <class>PizzaShop.Resources.UserTypes</class>
+    <class>PizzaShop.Temp.PizzaSizes</class>
+    <class>PizzaShop.Temp.Contacts</class>
+    <class>PizzaShop.Temp.Orders</class>
+    <class>PizzaShop.Temp.Sessions</class>
+    <class>PizzaShop.Temp.UserTypes</class>
+    <class>PizzaShop.Temp.Addresses</class>
+    <class>PizzaShop.Temp.Users</class>
+    <class>PizzaShop.Temp.PizzaTypes</class>
+    <class>PizzaShop.Temp.Toppings</class>
+    <class>PizzaShop.Temp.Pizzas</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/PizzaShop?zeroDateTimeBehavior=convertToNull"/>

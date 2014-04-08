@@ -7,6 +7,7 @@
 package PizzaShop.Services;
 
 import PizzaShop.Data.DatabaseFactory;
+import PizzaShop.Data.ServiceFactory;
 import PizzaShop.Models.Order;
 import PizzaShop.Resources.IActionResult;
 import java.sql.Connection;
@@ -22,6 +23,7 @@ import java.util.logging.Logger;
 public class OrderService implements IDataService<Order> {
 
     private Connection con = null;
+    private PizzaService _pizzaSvc = ServiceFactory.Instance().getPzaSvc();
     
     public OrderService(){
         try{
@@ -34,6 +36,9 @@ public class OrderService implements IDataService<Order> {
     
     @Override
     public IActionResult<Order> Create(Order obj) {
+        
+        
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
