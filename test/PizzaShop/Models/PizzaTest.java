@@ -22,7 +22,7 @@ public class PizzaTest {
         Pizza p = new Pizza(PizzaSize.Large, PizzaType.Chicago);
         double expected = p.getSize().getCost() + p.getType().getCost();
         assertEquals(expected, p.getCost(), 0.01);
-        p.addTopping(new PizzaTopping("Pepperoni", 0.25));
+        p.addTopping(PizzaTopping.Pepperoni);
         assertEquals(expected + 0.25, p.getCost(), 0.01);
     }
     
@@ -30,9 +30,9 @@ public class PizzaTest {
     public void testAddTopping(){
         System.out.println("[PizzaTest][testAddTopping]");
         Pizza p = new Pizza(PizzaSize.Large, PizzaType.Chicago);
-        PizzaTopping top1 = new PizzaTopping("Pepperoni", 0.50);
-        PizzaTopping top2 = new PizzaTopping("Sausage", 0.75);
-        PizzaTopping top3 = new PizzaTopping("Black Olives", 0.90);
+        PizzaTopping top1 = PizzaTopping.Pepperoni;
+        PizzaTopping top2 = PizzaTopping.Sausage;
+        PizzaTopping top3 = PizzaTopping.BlackOlives;
         p.addTopping(top1);
         p.addTopping(top2);
         p.addTopping(top3);
@@ -43,8 +43,8 @@ public class PizzaTest {
     public void testRemoveTopping(){
         System.out.println("[PizzaTest][testRemoveTopping]");
         Pizza p = new Pizza(PizzaSize.Large, PizzaType.Chicago);
-        PizzaTopping top1 = new PizzaTopping("Pepperoni", 0.50);
-        PizzaTopping top2 = new PizzaTopping("Sausage", 0.75);
+        PizzaTopping top1 = PizzaTopping.Pepperoni;
+        PizzaTopping top2 = PizzaTopping.Sausage;
         p.addTopping(top1);
         p.addTopping(top2);
         assertEquals(2, p.getToppings().size());
@@ -57,8 +57,8 @@ public class PizzaTest {
     public void testHasTopping(){
         System.out.println("[PizzaTest][testHasTopping]");
         Pizza p = new Pizza(PizzaSize.Large, PizzaType.Chicago);
-        PizzaTopping top1 = new PizzaTopping("Pepperoni", 0.50);
-        PizzaTopping top2 = new PizzaTopping("Sausage", 0.50);
+        PizzaTopping top1 = PizzaTopping.Pepperoni;
+        PizzaTopping top2 = PizzaTopping.Sausage;
         p.addTopping(top1);
         p.addTopping(top2);
         assertTrue(p.hasTopping(top1));

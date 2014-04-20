@@ -22,5 +22,9 @@ pizzaShopControllers.controller('PizzasCtrl', ['$scope',
                 Price: 10.99
             }
         ];
+
+        $scope.test = function(){
+            alert('PizzasCtrl Test');
+        }
     }
 ]);

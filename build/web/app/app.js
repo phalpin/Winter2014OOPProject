@@ -6,7 +6,9 @@ var pizzaShopApp = angular.module
     ('pizzaShopApp',
         [
             'ngRoute',
-            'pizzaShopControllers'
+            'pizzaShopControllers',
+            'ngAnimate',
+            'toaster'
         ]
    );
 
@@ -27,6 +29,18 @@ pizzaShopApp.config(['$routeProvider',
             when('/Pizzas/:id',{
                 templateUrl: 'app/pizzas/pizza.html',
                 controller: 'PizzaCtrl'
+            }).
+            when('/Login',{
+                templateUrl: 'app/login/login.html',
+                controller: 'LoginTest'
+            }).
+            when('/Register',{
+                templateUrl: 'app/register/register.html',
+                controller: 'RegisterCtrl'
+            }).
+            when('/Logout',{
+                templateUrl: 'app/logout/logout.html',
+                controller: 'LogoutCtrl'
             })
     }
 ]);

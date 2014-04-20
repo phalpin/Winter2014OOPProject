@@ -68,6 +68,7 @@ CREATE PROCEDURE PizzaShop.Session_Delete(
     IN p_id INT
 )
 BEGIN
+    UPDATE Users SET Users.sessionId = NULL WHERE Users.sessionId = p_id;
     DELETE FROM Sessions WHERE Sessions.id = p_id;
 END $$
 

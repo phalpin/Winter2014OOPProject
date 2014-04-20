@@ -11,7 +11,6 @@ import PizzaShop.Services.ContactService;
 import PizzaShop.Services.OrderService;
 import PizzaShop.Services.PizzaService;
 import PizzaShop.Services.SessionService;
-import PizzaShop.Services.ToppingService;
 import PizzaShop.Services.UserService;
 
 /**
@@ -33,7 +32,6 @@ public class ServiceFactory {
     private final OrderService _ordSvc;
     private final PizzaService _pzaSvc;
     private final SessionService _ssnSvc;
-    private final ToppingService _topSvc;
     private final UserService _usrSvc;
     
     public ServiceFactory(){
@@ -42,7 +40,6 @@ public class ServiceFactory {
         _ordSvc = new OrderService();
         _pzaSvc = new PizzaService();
         _ssnSvc = new SessionService();
-        _topSvc = new ToppingService();
         _usrSvc = new UserService();
     }
 
@@ -64,10 +61,6 @@ public class ServiceFactory {
 
     public SessionService getSsnSvc() {
         return _ssnSvc;
-    }
-
-    public ToppingService getTopSvc() {
-        return _topSvc;
     }
 
     public UserService getUsrSvc() {

@@ -14,7 +14,5 @@ import java.lang.ProcessBuilder.Redirect.Type;
  * @author phalpin
  */
 public class GsonManager {
-    
     public final static Gson GO = new Gson();
-    
 }

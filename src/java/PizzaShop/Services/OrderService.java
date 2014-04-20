@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 public class OrderService implements IDataService<Order> {
 
     private Connection con = null;
-    private PizzaService _pizzaSvc = ServiceFactory.Instance().getPzaSvc();
     
     public OrderService(){
         try{

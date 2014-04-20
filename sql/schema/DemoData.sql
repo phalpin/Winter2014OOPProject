@@ -7,6 +7,13 @@ INSERT INTO UserTypes (Name) VALUES ('VIP');
 INSERT INTO UserTypes (Name) VALUES ('User');
 INSERT INTO UserTypes (Name) VALUES ('Administrator');
 
+-- Insert the Pizza Toppings
+INSERT INTO Toppings (Topping, Cost) VALUES
+('Pepperoni', 0.25),
+('Sausage', 0.50),
+('Jalapenos', 0.75),
+('Black Olives', 0.50);
+
 -- Create Non-user Contacts 'AKA Anonymous Customers'
 CALL Contact_Create('Jane', 'Smith', 'Doe', '5619541234', '5614231654');
 CALL Contact_Create('Sally', NULL, 'Jones', '5613862598', '5612984376');

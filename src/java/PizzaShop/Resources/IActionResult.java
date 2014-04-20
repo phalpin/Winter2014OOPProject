@@ -18,6 +18,7 @@ public interface IActionResult<T> {
     public ActionResultStatus getStatus();
     
     public void setMessage(String msg);
+    public void setMessage(String msg, Exception ex);
     public String getMessage();
     
     public boolean isSuccess();

@@ -10,6 +10,7 @@ import PizzaShop.Models.User;
 import PizzaShop.Models.UserType;
 import PizzaShop.Resources.ActionResult;
 import PizzaShop.Resources.ActionResultStatus;
+import PizzaShop.Resources.GsonManager;
 import PizzaShop.Resources.IActionResult;
 import PizzaShop.Services.UserService;
 import TestHelpers.UserTestHelper;
@@ -40,6 +41,8 @@ public class UserServiceTest {
         User u = UserTestHelper.generateUser();
         IActionResult<User> result = _svc.Create(u);
         assertEquals(ActionResultStatus.SUCCESS, result.getStatus());
+        
+        System.out.println(GsonManager.GO.toJson(u));
     }
 
     /**
@@ -113,7 +116,7 @@ public class UserServiceTest {
     }
     
     @Test
-    public void testCreatePassworD(){
+    public void testCreatePassword(){
         User u = new User();
         u.setFirstName("Phillip");
         u.setMiddleName("Daniel");

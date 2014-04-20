@@ -14,17 +14,18 @@ import PizzaShop.Resources.GsonManager;
 import PizzaShop.Resources.IActionResult;
 import PizzaShop.Services.SessionService;
 import PizzaShop.Services.UserService;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.PathParam;
+import java.util.Date;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * REST Web Service
@@ -117,6 +118,7 @@ public class UsersResource extends BaseSvc {
                 //if there's an existing active session, maybe they've navigated away from the site or something.
                 //Go ahead and remove it.
                 if(incoming.getSessionId() != 0){
+                    Session sess = incoming.getSession();
                     _sessSvc.Delete(incoming.getSessionId());
                 }
                 
@@ -131,11 +133,11 @@ public class UsersResource extends BaseSvc {
                 }
             }
             else{
-                return Fail("Invalid Password");
+                return Success("Invalid Password");
             }
         }
         else{
-            return Fail("Invalid Username");
+            return Success("Invalid Username");
         }
     }
 }

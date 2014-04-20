@@ -1,43 +1,47 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
+/*
+ * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
 package PizzaShop.Models;
 
-/**
- *
- * @author phalpin
- */
-public class PizzaTopping extends DBEntity implements IPriceableEntity{
 
-    private String _name;
-    private double _cost;
+public enum PizzaTopping implements IDBEnum, IPriceableEntity {
+    //Values
+    Pepperoni(1, "Pepperoni", 0.25),
+    Sausage(2, "Sausage", 0.50),
+    Jalapenos(3, "Jalapenos", 0.75),
+    BlackOlives(4, "Black Olives", 0.50);
     
-    public PizzaTopping(String name, double cost)
-    {
-        _name = name;
+    
+    PizzaTopping(int id, String name, double cost){
+        _value = id;
         _cost = cost;
+        _name = name;
     }
-    
-    public PizzaTopping(){}
+
+    @Override
+    public String getName() {
+        return _name;
+    }
+
+    @Override
+    public int getValue() {
+        return _value;
+    }
     
     @Override
     public double getCost() {
         return _cost;
     }
 
-    public void setCost(double cost) {
-        _cost = cost;
-    }
-    
-    public String getName(){
-        return _name;
-    }
-    
-    public void setName(String name){
-        _name = name;
-    }
-    
+    private final int _value;
+    private final double _cost;
+    private final String _name;
+
+
 }
+

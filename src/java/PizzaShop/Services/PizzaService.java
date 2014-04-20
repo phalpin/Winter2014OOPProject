@@ -30,7 +30,6 @@ import java.util.logging.Logger;
 public class PizzaService implements IDataService<Pizza> {
 
     private Connection con = null;
-    private ToppingService _toppings = ServiceFactory.Instance().getTopSvc();
     
     public PizzaService(){
         try{
@@ -55,18 +54,11 @@ public class PizzaService implements IDataService<Pizza> {
                 obj.setId(rs.getInt("id"));
             }
             
-            //Create Toppings on Pizza.
-            for(PizzaTopping pt : obj.getToppings()){
-                if(pt.getId() == 0){
-                    _toppings.Create(pt);
-                }
-            }
-            
             //Set the Toppings as connected on the table.
             for(PizzaTopping pt : obj.getToppings()){
                 CallableStatement top = con.prepareCall("{call Pizza_AddTopping}");
                 top.setInt("p_pizzaId", obj.getId());
-                top.setInt("p_toppingId", pt.getId());
+                top.setInt("p_toppingId", pt.getValue());
                 top.executeQuery();
             }
         }
@@ -96,12 +88,7 @@ public class PizzaService implements IDataService<Pizza> {
             //Get the Toppings.
             rs = cstmt.getResultSet();
             while(rs.next()){
-                //public PizzaTopping(String name, double cost)
-                PizzaTopping pt = new PizzaTopping();
-                pt.setId(rs.getInt("id"));
-                pt.setCost(rs.getDouble("Cost"));
-                pt.setName(rs.getString("Topping"));
-                p.addTopping(pt);
+                p.addTopping(PizzaTopping.values()[rs.getInt("id") - 1]);
             }
             
             result.setStatus(ActionResultStatus.SUCCESS);

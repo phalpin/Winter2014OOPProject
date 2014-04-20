@@ -23,9 +23,9 @@ public class PizzaTestHelper {
     @Ignore
     public static Pizza getPizza(){
         Pizza result = new Pizza(PizzaSize.Large, PizzaType.Italian);
-        result.addTopping(new PizzaTopping("Pepperoni", 0.50));
-        result.addTopping(new PizzaTopping("Sausage", 0.75));
-        result.addTopping(new PizzaTopping("Mushroom", 0.80));
+        result.addTopping(PizzaTopping.Pepperoni);
+        result.addTopping(PizzaTopping.Jalapenos);
+        result.addTopping(PizzaTopping.Sausage);
         return result;
     }
     

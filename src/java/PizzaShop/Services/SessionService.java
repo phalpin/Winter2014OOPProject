@@ -73,12 +73,34 @@ public class SessionService implements IDataService<Session> {
 
     @Override
     public IActionResult<Session> Read(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ActionResult<Session> result = new ActionResult<Session>();
+        
+        try{
+            CallableStatement cstmt = con.prepareCall("{call Session_Read(?)}");
+            cstmt.setInt("p_id", id);
+            ResultSet rs = cstmt.executeQuery();
+            
+            //The session object populated.
+            Session s = new Session(
+                    rs.getInt("id"),
+                    rs.getString("token"),
+                    new java.util.Date(rs.getDate("startedOn").getTime()),
+                    rs.getInt("userId")
+            );
+            result.setStatus(ActionResultStatus.SUCCESS);
+            result.setResult(s);
+        }
+        catch(Exception ex){
+            result.setStatus(ActionResultStatus.FAILURE);
+            result.setMessage("Failed to read the requested session", ex);
+        }
+        
+        return result;
     }
 
     @Override
     public IActionResult<Session> Read(Session obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Read(obj.getId());
     }
 
     @Override
@@ -88,12 +110,47 @@ public class SessionService implements IDataService<Session> {
 
     @Override
     public IActionResult<Boolean> Delete(Session obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ActionResult<Boolean> result = new ActionResult<Boolean>();
+        
+        if(SessionCached(obj.getToken())){
+            RemoveSessionFromCache(obj);
+        }
+        
+        try{
+            CallableStatement cstmt = con.prepareCall("{call Session_Delete(?)}");
+            cstmt.setInt("p_id", obj.getId());
+            cstmt.executeQuery();
+            result.setStatus(ActionResultStatus.SUCCESS);
+            result.setResult(Boolean.TRUE);
+            result.setMessage("Successfully removed the session from both the cache and the database.");
+            con.close();
+        }
+        catch(Exception ex){
+            result.setStatus(ActionResultStatus.FAILURE);
+            result.setMessage("An error occurred removing the session from the database", ex);
+        }
+        
+        return result;
     }
 
     @Override
     public IActionResult<Boolean> Delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        IActionResult<Boolean> result = new ActionResult<Boolean>();
+        try{
+            IActionResult<Session> readResult = Read(id);
+            if(readResult.isSuccess()){
+                result = Delete(readResult.getResult());
+            }
+            else{
+                result.setStatus(readResult.getStatus());
+                result.setMessage(readResult.getMessage());
+            }
+        }
+        catch(Exception ex){
+            result.setStatus(ActionResultStatus.FAILURE);
+            result.setMessage("Failed to read/delete the item from the database.", ex);
+        }
+        return result;
     }
     
     public IActionResult<Session> ReadByToken(String token){
