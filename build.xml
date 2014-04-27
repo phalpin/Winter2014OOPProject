@@ -70,6 +70,7 @@
             <transaction src="sql/procedures/Users.sql" />
             <transaction src="sql/procedures/Session.sql" />
             <transaction src="sql/procedures/Pizzas.sql" />
+            <transaction src="sql/procedures/Orders.sql" />
         </sql>
         
         <!-- Functions -->

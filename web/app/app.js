@@ -8,7 +8,8 @@ var pizzaShopApp = angular.module
             'ngRoute',
             'pizzaShopControllers',
             'ngAnimate',
-            'toaster'
+            'toaster',
+            'ui.bootstrap'
         ]
    );
 
@@ -41,6 +42,14 @@ pizzaShopApp.config(['$routeProvider',
             when('/Logout',{
                 templateUrl: 'app/logout/logout.html',
                 controller: 'LogoutCtrl'
-            })
+            }).
+            when('/Cart', {
+                templateUrl: 'app/cart/cart.html',
+                controller: 'CartCtrl'
+            }).
+            when('/Account', {
+                templateUrl: 'app/account/account.html',
+                controller: 'AcctCtrl'
+            });
     }
 ]);

@@ -14,6 +14,7 @@ pizzaShopControllers.controller('LoginTest', [
         $scope.attemptLogin = function(){
             userService.attemptLogin(this.credentials.username, this.credentials.password)
                 .then(function(response){
+                    //If we got a token back.
                     if(response.data.token){
                         $http.defaults.headers.common.Authorization = response.data.token;
                         localStorage.setItem('Authentication', response.data.token);
@@ -25,7 +26,6 @@ pizzaShopControllers.controller('LoginTest', [
                         toaster.pop('warning', "Invalid Login", "Check your username or your password!", null, 'trustedHtml');
                     }
                 });
-
         };
     }
 ]);

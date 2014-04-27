@@ -8,6 +8,9 @@
 
 package PizzaShop.Models;
 
+import PizzaShop.Outbound.ToppingJSON;
+import java.util.ArrayList;
+
 
 public enum PizzaTopping implements IDBEnum, IPriceableEntity {
     //Values
@@ -36,6 +39,19 @@ public enum PizzaTopping implements IDBEnum, IPriceableEntity {
     @Override
     public double getCost() {
         return _cost;
+    }
+    
+    public static ArrayList<ToppingJSON> getOptions(){
+        ArrayList<ToppingJSON> result = new ArrayList<ToppingJSON>();
+        result.add(new ToppingJSON(Pepperoni));
+        result.add(new ToppingJSON(Sausage));
+        result.add(new ToppingJSON(Jalapenos));
+        result.add(new ToppingJSON(BlackOlives));
+        return result;
+    }
+    
+    public static PizzaTopping fromId(int id){
+        return PizzaTopping.values()[id-1];
     }
 
     private final int _value;

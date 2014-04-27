@@ -21,10 +21,28 @@ pizzaShopApp.factory(
                         data: {username:userName, password:passWord}
                     })
                     return promise;
+                },
+                //endregion
+                
+                
+                //region attemptRegistration
+                /**
+                 * The attempt registration function. Attempts to register a given user with our endpoint.
+                 * @param {type} user User to register.
+                 * @returns {promise} Returns a promise object for you to do with as you please.
+                 */
+                attemptRegistration: function(user){
+                    var promise = $http({
+                       method:'POST',
+                       url:baseEndpoint + "/register",
+                       data: user
+                    });
+                    return promise;
                 }
                 //endregion
 
-            }
+            };
+            
             return userService;
         }
 ]);

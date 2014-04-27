@@ -8,13 +8,12 @@ package PizzaShop.WebServices;
 
 import PizzaShop.Data.ServiceFactory;
 import PizzaShop.Models.Session;
+import PizzaShop.Models.User;
 import PizzaShop.Resources.IActionResult;
 import PizzaShop.Services.SessionService;
 import PizzaShop.Services.UserService;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
 /**
  *
@@ -38,7 +37,12 @@ public class BaseSvc {
     }
     
     public static Response Success(IActionResult result){
-        return Response.status(200).entity(result.getResult()).build();
+        if(result.isSuccess()){
+            return Response.status(200).entity(result.getResult()).build();    
+        }
+        else{
+            return Response.status(200).entity(result.getMessage()).build();
+        }
     }
     
     public static Response Fail(){
@@ -75,6 +79,29 @@ public class BaseSvc {
     
     public static boolean IsAuthorized(HttpHeaders headers){
         return IsAuthorized(headers.getHeaderString("Authorization"));
+    }
+    
+    public static User GetUser(HttpHeaders headers){
+        String token = headers.getHeaderString("Authorization");
+        
+        if(_ssnSvc.SessionCached(token)){
+            return _ssnSvc.GetUserFromSession(headers.getHeaderString("Authorization"));
+        }
+        else{
+            IActionResult<Session> sess = _ssnSvc.ReadByToken(token);
+            if(sess.isSuccess()){
+                IActionResult<User> usr = _usrSvc.Read(sess.getResult().getUserId());
+                if(usr.isSuccess()){
+                    return usr.getResult();
+                }
+                else{
+                    return null;
+                }
+            }
+            else{
+                return null;
+            }
+        }
     }
     
     /**

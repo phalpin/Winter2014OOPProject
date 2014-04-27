@@ -7,16 +7,21 @@
 package PizzaShop.WebServices;
 
 import PizzaShop.Models.Pizza;
+import PizzaShop.Models.PizzaSize;
+import PizzaShop.Models.PizzaType;
 import PizzaShop.Services.IDataService;
 import PizzaShop.Services.PizzaService;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.PathParam;
+import static PizzaShop.WebServices.BaseSvc.Success;
+import static PizzaShop.WebServices.BaseSvc.Success;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.GET;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * REST Web Service
@@ -56,5 +61,20 @@ public class PizzasResource {
     @PUT
     @Consumes("application/json")
     public void putJson(String content) {
+    }
+    
+    
+    @Path("Sizes")
+    @GET
+    @Produces("application/json")
+    public Response sizes(){
+        return Success(PizzaSize.getOptions());
+    }
+    
+    @Path("Types")
+    @GET
+    @Produces("application/json")
+    public Response types(){
+        return Success(PizzaType.getOptions());
     }
 }

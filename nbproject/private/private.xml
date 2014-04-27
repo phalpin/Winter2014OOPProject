@@ -3,11 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/cart/cart.controller.js</file>
             <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/shell/shell.controller.js</file>
-            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/logout/logout.html</file>
-            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/register/register.html</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/index.html</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Models/Pizza.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/account/account.html</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/cart/cart.html</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/Services/OrderService.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/sql/procedures/Pizzas.sql</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/services/cartService.service.js</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/css/shell.css</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/filters/toppingCSVFilter.filter.js</file>
             <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/logout/logout.controller.js</file>
-            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/login/login.controller.js</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/src/java/PizzaShop/WebServices/OrdersResource.java</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/sql/procedures/Orders.sql</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/filters/priceFilter.filter.js</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/app.js</file>
+            <file>file:/Users/phalpin/NetBeansProjects/PizzaShop/web/app/account/account.controller.js</file>
         </group>
     </open-files>
 </project-private>

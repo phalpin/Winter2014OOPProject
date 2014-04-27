@@ -7,12 +7,7 @@
 package PizzaShop.Models;
 
 import PizzaShop.Resources.GsonManager;
-import flexjson.JSONSerializer;
 import java.util.ArrayList;
-import org.codehaus.jettison.json.JSONArray;
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
-import com.google.gson.*;
 
 /**
  *
@@ -20,55 +15,56 @@ import com.google.gson.*;
  */
 public class Order extends DBEntity implements IPriceableEntity, ISerializable{
 
-    private ArrayList<Pizza> _pizzas;
-    private ArrayList<Side> _sides;
+    private ArrayList<Pizza> pizzas;
+    private ArrayList<Side> sides;
+    private int userId;
     
     public Order(){
-        _pizzas = new ArrayList<Pizza>();
-        _sides = new ArrayList<Side>();
+        pizzas = new ArrayList<Pizza>();
+        sides = new ArrayList<Side>();
     }
     
     public void addPizza(Pizza p){
-        _pizzas.add(p);
+        pizzas.add(p);
     }
     
     public void removePizza(Pizza p){
-        _pizzas.remove(p);
+        pizzas.remove(p);
     }
     
     public boolean hasPizza(Pizza p){
-        return _pizzas.contains(p);
+        return pizzas.contains(p);
     }
     
     public ArrayList<Pizza> getPizzas(){
-        return _pizzas;
+        return pizzas;
     }
     
     public void addSide(Side s){
-        _sides.add(s);
+        sides.add(s);
     }
     
     public void removeSide(Side s){
-        _sides.remove(s);
+        sides.remove(s);
     }
     
     public boolean hasSide(Side s){
-        return _sides.contains(s);
+        return sides.contains(s);
     }
     
     public ArrayList<Side> getSides(){
-        return _sides;
+        return sides;
     }
     
     @Override
     public double getCost() {
         double total = 0.0;
         
-        for(Pizza p : _pizzas){
+        for(Pizza p : pizzas){
             total += p.getCost();
         }
         
-        for(Side s : _sides){
+        for(Side s : sides){
             total += s.getCost();
         }
         
@@ -78,6 +74,14 @@ public class Order extends DBEntity implements IPriceableEntity, ISerializable{
     @Override
     public String toJson() {
         return GsonManager.GO.toJson(this);
+    }
+    
+    public int getUserId(){
+        return this.userId;
+    }
+    
+    public void setUserId(int userId){
+        this.userId = userId;
     }
 
     public static Order fromJson(String json){

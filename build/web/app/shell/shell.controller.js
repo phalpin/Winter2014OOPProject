@@ -1,6 +1,6 @@
 pizzaShopControllers.controller('ShellCtrl', [
-    '$scope', '$location', '$rootScope',
-    function($scope, $location, $rootScope){
+    '$scope', '$location', '$rootScope','$http','cartService',
+    function($scope, $location, $rootScope, $http, cartService){
 
         $scope.Links = [
             {
@@ -9,7 +9,7 @@ pizzaShopControllers.controller('ShellCtrl', [
                 Title: "Home"
             },
             {
-                Name: "Pizzas",
+                Name: "Build Your Pizza",
                 Path: "#/Pizzas",
                 Title: "Pizzas"
             }
@@ -28,21 +28,41 @@ pizzaShopControllers.controller('ShellCtrl', [
             }
         ];
         
+        $scope.CartLink = {
+            Name: "Cart (0)",
+            Path: "#/Cart",
+            Title: "View Shopping Cart"
+        };
+        
+        $scope.init = function(){
+            $scope.checkAuthentication();
+            $scope.checkCart();
+        };
+        
+        $scope.checkCart = function(){
+            cartService.load();
+        };
+        
         $scope.checkAuthentication = function(){
             var auth = localStorage.getItem("Authentication");
-            if(auth == "null"){
+            if(auth === "null"){
                 $rootScope.Authentication = null;
             }
             else{
                 $rootScope.Authentication = auth;
+                $http.defaults.headers.common.Authorization = auth;
             }
-        }
+        };
 
         $scope.isActive = function(path){
             var pattern = '/' + path;
             var re = new RegExp(pattern);
             return re.test($location.path());
-        }
+        };
+        
+        $scope.$watch('CartCount', function(){
+           $scope.CartLink.Name = "Cart (" + cartService.items.length + ")"; 
+        });
         
         $scope.$watch('Authentication', function(){
             if($scope.Authentication !== null){
@@ -51,6 +71,11 @@ pizzaShopControllers.controller('ShellCtrl', [
                         Name: "Log Out",
                         Path: "#/Logout",
                         Title: "Log Out"
+                    },
+                    {
+                        Name: "My Account",
+                        Path: "#/Account",
+                        Title: "View Your Account"
                     }
                 ];
             }
@@ -69,5 +94,7 @@ pizzaShopControllers.controller('ShellCtrl', [
                 ];
             }
         });
+        
+        
     }
 ]);

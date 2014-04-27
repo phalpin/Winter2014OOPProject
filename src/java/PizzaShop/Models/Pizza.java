@@ -1,50 +1,53 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Models;
 
 import PizzaShop.Resources.GsonManager;
 import java.util.ArrayList;
 
-/**
- *
- * @author phalpin
- */
-public class Pizza extends DBEntity implements IPriceableEntity, ISerializable<Pizza> {
-    private String _name;
-    private PizzaSize _size;
-    private PizzaType _type;
-    private ArrayList<PizzaTopping> _toppings;
 
-    public Pizza(){ }
+public class Pizza extends DBEntity implements IPriceableEntity, ISerializable<Pizza> {
+    private String name;
+    private PizzaSize size;
+    private PizzaType type;
+    private ArrayList<PizzaTopping> toppings;
+    private int orderId;
+
+    public Pizza()
+    {
+        toppings = new ArrayList<PizzaTopping>();
+    }
     
     public Pizza(PizzaSize size, PizzaType type){
-        _size = size;
-        _type = type;
-        _toppings = new ArrayList<PizzaTopping>();
+        this.size = size;
+        this.type = type;
+        toppings = new ArrayList<PizzaTopping>();
     }
     
     public PizzaSize getSize(){
-        return _size;
+        return size;
     }
     
     public void setSize(PizzaSize size){
-        _size = size;
+        this.size = size;
     }
     
     public PizzaType getType(){
-        return _type;
+        return type;
+    }
+    
+    public int getOrderId(){
+        return orderId;
+    }
+    
+    public void setOrderId(int orderId){
+        this.orderId = orderId;
     }
     
     public void setType(PizzaType type){
-        _type = type;
+        this.type = type;
     }
     
     public void addTopping(PizzaTopping topping){
-        _toppings.add(topping);
+        toppings.add(topping);
     }
     
     /**
@@ -52,7 +55,7 @@ public class Pizza extends DBEntity implements IPriceableEntity, ISerializable<P
      * @param topping Removes a given topping from this particular pizza.
      */
     public void removeTopping(PizzaTopping topping){
-        _toppings.remove(topping);
+        toppings.remove(topping);
     }
     
     /**
@@ -60,7 +63,7 @@ public class Pizza extends DBEntity implements IPriceableEntity, ISerializable<P
      * @return A list of toppings for this particular pizza.
      */
     public ArrayList<PizzaTopping> getToppings(){
-        return _toppings;
+        return toppings;
     }
     
     /**
@@ -69,15 +72,15 @@ public class Pizza extends DBEntity implements IPriceableEntity, ISerializable<P
      * @return true or false, based on 
      */
     public boolean hasTopping(PizzaTopping t){
-        return _toppings.contains(t);
+        return toppings.contains(t);
     }
     
     @Override
     public double getCost() {
         double amount = 0.0;
-        amount += _size.getCost();
-        amount += _type.getCost();
-        for(PizzaTopping pt : _toppings){
+        amount += size.getCost();
+        amount += type.getCost();
+        for(PizzaTopping pt : toppings){
             amount += pt.getCost();
         }
         return amount;

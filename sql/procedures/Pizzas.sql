@@ -13,7 +13,7 @@ BEGIN
     VALUES
     (p_pizzaSizeId, p_pizzaTypeId, p_orderId);
 
-    SELECT LAST_INSERT_ID();
+    SELECT LAST_INSERT_ID() as 'id';
 END $$
 
 

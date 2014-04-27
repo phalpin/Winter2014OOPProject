@@ -9,6 +9,7 @@ package PizzaShop.WebServices;
 import PizzaShop.Data.ServiceFactory;
 import PizzaShop.Models.Session;
 import PizzaShop.Models.User;
+import PizzaShop.Models.UserType;
 import PizzaShop.Resources.ActionResultStatus;
 import PizzaShop.Resources.GsonManager;
 import PizzaShop.Resources.IActionResult;
@@ -26,6 +27,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import org.jasypt.salt.StringFixedSaltGenerator;
 
 /**
  * REST Web Service
@@ -129,6 +131,7 @@ public class UsersResource extends BaseSvc {
                 }
                 else{
                    incoming.setSession(sessionCreation.getResult());
+                   _sessSvc.AddSessionToCache(sessionCreation.getResult(), incoming);
                    return Success(sess);
                 }
             }
@@ -138,6 +141,25 @@ public class UsersResource extends BaseSvc {
         }
         else{
             return Success("Invalid Username");
+        }
+    }
+    
+    @POST
+    @Path("register")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Response Register(String content){
+        try{
+            User incoming = GsonManager.GO.fromJson(content, User.class);
+            incoming.setType(UserType.Customer);
+            IActionResult<User> creationResult = _usrSvc.Create(incoming);
+            if(creationResult.isSuccess()){
+                return Success("Successfully created the user");
+            }
+            else return Success("Failed to create the user: " + creationResult.getMessage());
+        }
+        catch(Exception ex){
+            return Fail();
         }
     }
 }

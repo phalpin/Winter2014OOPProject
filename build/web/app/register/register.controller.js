@@ -1,14 +1,11 @@
-pizzaShopControllers.controller('RegisterCtrl',
-
-    /**
-     * Registration controller.
-     * @param $scope
-     */
-    function($scope){
+pizzaShopControllers.controller('RegisterCtrl',[
+    
+    '$scope', 'userService', '$http', 'toaster', '$rootScope', '$location',
+    function($scope, userService, $http, toaster, $rootScope, $location){
         $scope.user = {
-            firstname:'',
-            middlename:'',
-            lastname:'',
+            firstName:'',
+            middleName:'',
+            lastName:'',
             username:'',
             emailaddress:'',
             password:''
@@ -75,17 +72,36 @@ pizzaShopControllers.controller('RegisterCtrl',
         
         $scope.disableSubmit = function(){
             return !(
-                $scope.user.firstname !== '' && $scope.user.middlename !== '' &&
-                $scope.user.lastname !== ''  && $scope.user.username !== '' &&
+                $scope.user.firstName !== '' && $scope.user.middleName !== '' &&
+                $scope.user.lastName !== ''  && $scope.user.username !== '' &&
                 $scope.user.emailaddress !== '' && $scope.user.password !== '' &&
                 $scope.passwordsMatch());
         };
         
         $scope.submitRegistration = function(){
             if(!$scope.disableSubmit()){
-                alert('Provide registration implementation');
+                userService.attemptRegistration($scope.user)
+                        .then(function(response){
+                            if(response.status === 200 && response.data === "Successfully created the user"){
+                                userService.attemptLogin($scope.user.username, $scope.user.password)
+                                .then(function(response){
+                                    if(response.data.token){
+                                        $http.defaults.headers.common.Authorization = response.data.token;
+                                        localStorage.setItem('Authentication', response.data.token);
+                                        $rootScope.Authentication = response.data.token;
+                                        toaster.pop('success', "Successfully Registered", "You're registered and logged in!", null, 'trustedHtml');
+                                        $location.path('/');
+                                    }
+                                    else{
+                                        toaster.pop('warning', "Successfully Registered", "Failed to log you in though =(", null, 'trustedHtml');
+                                    }
+                                });
+                            }
+                            else{
+                                toaster.pop('warning', 'Unable to Register', response.data, null, 'trustedHtml');
+                            }
+                        });
             }
-        }
-        
+        };
     }
-);
+]);

@@ -1,35 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.WebServices;
 
+import PizzaShop.Data.ServiceFactory;
 import PizzaShop.Models.Order;
-import PizzaShop.Services.IDataService;
+import PizzaShop.Models.Pizza;
+import PizzaShop.Models.User;
+import PizzaShop.Resources.GsonManager;
+import PizzaShop.Resources.IActionResult;
 import PizzaShop.Services.OrderService;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.PathParam;
+import PizzaShop.Services.PizzaService;
+import static PizzaShop.WebServices.BaseSvc.GetUser;
+import static PizzaShop.WebServices.BaseSvc.Success;
+import static PizzaShop.WebServices.BaseSvc.Success;
+import com.google.common.reflect.TypeToken;
+import java.util.ArrayList;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
-/**
- * REST Web Service
- *
- * @author phalpin
- */
+
 @Path("Orders")
 public class OrdersResource {
 
     @Context
     private UriInfo context;
     
-    public IDataService<Order> _svc;
+    public OrderService _svc = ServiceFactory.Instance().getOrdSvc();
+    public PizzaService _pzaSvc = ServiceFactory.Instance().getPzaSvc();
 
     /**
      * Creates a new instance of OrdersResource
@@ -39,22 +41,46 @@ public class OrdersResource {
 
     /**
      * Retrieves representation of an instance of PizzaShop.WebServices.OrdersResource
+     * @param headers
      * @return an instance of java.lang.String
      */
     @GET
     @Produces("application/json")
-    public String getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public Response readAllForUser(@Context HttpHeaders headers) {
+        User orderingUser = GetUser(headers);
+        if(orderingUser != null){
+            IActionResult<ArrayList<Order>> ordersResult = _svc.ReadAllForUser(orderingUser.getId());
+            return Success(ordersResult);
+        }
+        else{
+            return Success("Unauthorized.");
+        }
     }
-
-    /**
-     * PUT method for updating or creating an instance of OrdersResource
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
-     */
-    @PUT
+    
+    @Path("Submit")
+    @POST
+    @Produces("application/json")
     @Consumes("application/json")
-    public void putJson(String content) {
+    public Response submit(String content, @Context HttpHeaders headers){        
+        User orderingUser = GetUser(headers);
+        if(orderingUser != null){
+            java.lang.reflect.Type listType = new TypeToken<ArrayList<Pizza>>(){}.getType();
+            ArrayList<Pizza> pizzas = GsonManager.GO.fromJson(content, listType);
+            
+            Order o = new Order();
+            o.setUserId(orderingUser.getId());
+            IActionResult<Order> orderCreation = _svc.Create(o);
+            
+            if(orderCreation.isSuccess()){
+                for(Pizza p : pizzas){
+                    p.setOrderId(o.getId());
+                    _pzaSvc.Create(p);
+                    o.addPizza(p);
+                }
+                return Success(orderCreation);
+            }
+        }
+        
+        return Success("Order not submitted.");
     }
 }

@@ -6,15 +6,22 @@
 
 package PizzaShop.Models;
 
+import PizzaShop.Outbound.TypeJSON;
+import java.util.ArrayList;
+
 /**
  *
  * @author phalpin
  */
 public enum PizzaType implements IDBEnum, IPriceableEntity {
     //Values
-    NewYork(1, "New York", 0.00),
-    Chicago(2, "Chicago", 0.50),
-    Italian(3, "Italian", 1.00);
+    NewYork(1, "New York",1.50),
+    Chicago(2, "Chicago", 1.00),
+    Italian(3, "Italian", 0.75);
+
+    public static PizzaType fromId(int typeId) {
+        return PizzaType.values()[typeId - 1];
+    }
     
     //Enum Implementation
     PizzaType(int val, String name, double cost){
@@ -41,4 +48,11 @@ public enum PizzaType implements IDBEnum, IPriceableEntity {
         return _cost;
     }
     
+    public static ArrayList<TypeJSON> getOptions(){
+        ArrayList<TypeJSON> result = new ArrayList<TypeJSON>();
+        result.add(new TypeJSON(NewYork));
+        result.add(new TypeJSON(Chicago));
+        result.add(new TypeJSON(Italian));
+        return result;
+    }
 }

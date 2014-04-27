@@ -48,6 +48,7 @@ public class PizzaService implements IDataService<Pizza> {
             CallableStatement pza = con.prepareCall("{call Pizza_Create(?,?,?)}");
             pza.setInt("p_pizzaSizeId", obj.getSize().getValue());
             pza.setInt("p_pizzaTypeId", obj.getType().getValue());
+            pza.setInt("p_orderId", obj.getOrderId());
             
             ResultSet rs = pza.executeQuery();
             if(rs.next()){
@@ -56,14 +57,15 @@ public class PizzaService implements IDataService<Pizza> {
             
             //Set the Toppings as connected on the table.
             for(PizzaTopping pt : obj.getToppings()){
-                CallableStatement top = con.prepareCall("{call Pizza_AddTopping}");
+                CallableStatement top = con.prepareCall("{call Pizza_AddTopping(?,?)}");
                 top.setInt("p_pizzaId", obj.getId());
                 top.setInt("p_toppingId", pt.getValue());
                 top.executeQuery();
             }
         }
         catch(Exception ex){
-            
+            result.setStatus(ActionResultStatus.FAILURE);
+            result.setMessage(ex.getMessage());
         }
 
         return result;

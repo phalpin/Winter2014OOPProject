@@ -1,3 +1,36 @@
 * {
     border-radius: 0!important;
 }
+
+.btn-full{
+    width: 100%;
+}
+
+.pizzaoptions .panel-default > .panel-heading{
+    background-color: rgba(128,128,128,0.1);
+}
+
+.shoppingcart .cartcontents{
+    font-weight: bold;
+}
+
+table.table.table-invis{
+    background-color: transparent;
+    opacity: 0.6;
+}
+
+table.pizzadetail td.size{
+    width: 15%;
+}
+
+table.pizzadetail td.style{
+    width: 15%;
+}
+
+table.pizzadetail td.toppings{
+    width: 60%;
+}
+
+table.pizzadetail td.price{
+    width: 10%;
+}

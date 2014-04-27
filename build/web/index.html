@@ -10,11 +10,10 @@
     </head>
 
     <body>
-        <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
         <div class="pageContainer container">
 
             <!-- Shell Instantiation -->
-            <div data-ng-controller="ShellCtrl" data-ng-init="checkAuthentication()">
+            <div data-ng-controller="ShellCtrl" data-ng-init="init()">
 
                 <div class="shell">
 
@@ -46,6 +45,7 @@
                                     
                                     <ul class="nav navbar-nav navbar-right">
                                         <li data-ng-repeat="l in LoginLinks"><a href="{{l.Path}}" title="{{l.Title}}" data-ng-class="{ active: isActive(l.Path) }">{{l.Name}}</a></li>
+                                        <li><a href="{{CartLink.Path}}" title="{{CartLink.Title}}">{{CartLink.Name}}</a></li>
                                     </ul>
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->
@@ -58,23 +58,32 @@
             <div data-ng-view data-ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></div>
             <!--<div data-ng-view data-ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></div>-->
         </div>
-        </body>
+        <toaster-container toaster-options="{'time-out': 2000, 'position-class':'toast-bottom-full-width'}"></toaster-container>
+    </body>
 
     <!-- Third Party JS Includes -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0-beta.3/angular-route.min.js"></script>
-    <script src="http://code.angularjs.org/1.2.8/angular-animate.min.js" ></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-animate.min.js" ></script>
     <script src="js/ngStorage.min.js"></script>
     <script src="js/toaster.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
 
     <!-- App -->
     <script src="app/app.js"></script>
 
     <!-- Services -->
     <script src="app/services/userservice.service.js"></script>
-
+    <script src="app/services/pizzaService.service.js"></script>
+    <script src="app/services/cartService.service.js"></script>
+    <script src="app/services/orderService.service.js"></script>
+    
+    <!-- Filters -->
+    <script src="app/filters/priceFilter.filter.js"></script>
+    <script src="app/filters/pizzaNameFilter.filter.js"></script>
+    <script src="app/filters/toppingCSVFilter.filter.js"></script>
 
     <!-- Controllers -->
     <script src="app/controllers.js"></script>
@@ -84,5 +93,9 @@
     <script src="app/register/register.controller.js"></script>
     <script src="app/login/login.controller.js"></script>
     <script src="app/logout/logout.controller.js"></script>
+    <script src="app/cart/cart.controller.js"></script>
+    <script src="app/login/login.modal.controller.js"></script>
+    <script src="app/account/account.controller.js"></script>
+    
 
 </html>

@@ -1,9 +1,73 @@
-<button class="btn btn-primary" data-ng-click="test()">Click for Test</button>
-
-<div class="pizzaoptions">
-    <div class="pizza" data-ng-repeat="p in Pizzas">
-        <span class="size">{{p.Size}}</span>
-        <span class="style">{{p.Style}}</span>
-        <span class="price">{{p.Price}}</span>
+<div class="row pizzaoptions" data-ng-init="init()">
+    <!-- Pizza Builder Container -->
+    <div class="col-xs-12 col-sm-6 col-md-8">
+        
+        
+        <div class="panel-group" id="accordion">
+            
+            <!-- Size Options -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion">
+                            Choose Your Size
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <select data-ng-model="pizza.size" data-ng-options="s as s.name for s in options.sizes" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Style Options -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion">
+                            Choose Your Style
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <select data-ng-model="pizza.type" data-ng-options="s as s.name for s in options.types" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- Toppings Options -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion">
+                            Choose Your Toppings
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <select data-ng-model="pizza.toppings" data-ng-options="t as t.name for t in options.toppings" multiple class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button type="button" class="btn btn-lg btn-primary btn-full" data-ng-disabled="!canAddToCart()" data-ng-click="addToCart()">Add to Cart</button>
+    </div>
+    
+    <!-- Pizza Status Area -->
+    <div class="col-xs-6 col-md-4">
+        
+        <div class="container">
+            <h2>Total: {{pizza.cost | priceFilter}}</h2>
+        </div>
+        
+        <div class="container">
+            
+        </div>
+        
     </div>
 </div>

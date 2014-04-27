@@ -8,14 +8,17 @@ package PizzaShop.WebServices;
 
 import PizzaShop.Models.PizzaTopping;
 import PizzaShop.Services.IDataService;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.PathParam;
+import PizzaShop.Services.PizzaService;
+import static PizzaShop.WebServices.BaseSvc.Success;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.GET;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * REST Web Service
@@ -28,7 +31,7 @@ public class ToppingsResource {
     @Context
     private UriInfo context;
 
-    public IDataService<PizzaTopping> _svc;
+    public PizzaService _svc;
     
     /**
      * Creates a new instance of ToppingsResource
@@ -42,9 +45,8 @@ public class ToppingsResource {
      */
     @GET
     @Produces("application/json")
-    public String getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public Response getJson() {
+        return Success(PizzaTopping.getOptions());
     }
 
     /**
