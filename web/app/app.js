@@ -50,6 +50,20 @@ pizzaShopApp.config(['$routeProvider',
             when('/Account', {
                 templateUrl: 'app/account/account.html',
                 controller: 'AcctCtrl'
+            }).
+            when('/AllOrders', {
+                templateUrl: 'app/admin/allorders/allorders.html',
+                controller: 'AllOrdersCtrl'
             });
+    }
+]);
+
+//Whitelist the necessary stuff for skype.
+pizzaShopApp.config( [
+    '$compileProvider',
+    function( $compileProvider )
+    {   
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|skype):/);
+        // Angular before v1.2 uses $compileProvider.urlSanitizationWhitelist(...)
     }
 ]);

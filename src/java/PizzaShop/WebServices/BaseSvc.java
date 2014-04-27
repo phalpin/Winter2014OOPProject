@@ -15,10 +15,6 @@ import PizzaShop.Services.UserService;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 
-/**
- *
- * @author phalpin
- */
 public class BaseSvc {
     
     private static UserService _usrSvc = ServiceFactory.Instance().getUsrSvc();

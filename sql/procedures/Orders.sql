@@ -47,4 +47,36 @@ BEGIN
 
 END $$
 
+-- Order Read All
+DROP PROCEDURE IF EXISTS PizzaShop.Order_ReadAll $$
+CREATE PROCEDURE PizzaShop.Order_ReadAll(
+)
+BEGIN
+    select 
+            u.contactId as 'ContactId',
+            c.firstName as 'FirstName',
+            c.homeNumber as 'HomeNumber',
+            u.id as 'UserId',
+            c.lastName as 'LastName',
+            c.middleName as 'MiddleName',
+            c.mobileNumber as 'MobileNumber',
+            u.userTypeId as 'UserTypeId',
+            u.username as 'Username'
+    from Orders o
+    join Users u on u.id = o.userId
+    join Contacts c on c.id = u.contactId;
+
+
+    select 
+            o.id as 'OrderId', 
+            o.userId as 'UserId', 
+            p.id as 'PizzaId', 
+            p.pizzaSizeId as 'SizeId', 
+            p.pizzaTypeId as 'TypeId', 
+            pt.toppingId as 'ToppingId'
+    from Pizzas p
+    join Orders o on o.id = p.orderId
+    left join PizzaToppings pt on pt.pizzaId = p.id;
+END $$
+
 -- DELIMITER ;

@@ -16,7 +16,9 @@ import org.jasypt.util.password.StrongPasswordEncryptor;
  */
 public class User extends Contact {
 
-    public User(){}
+    public User(){
+        orders = new ArrayList<Order>();
+    }
     
     //<editor-fold desc="Getters and Setters because lolJava">
     public int getContactId() {
@@ -91,6 +93,14 @@ public class User extends Contact {
         this.sessionId = sessionId;
     }
     //</editor-fold>
+    
+    public void addOrder(Order order){
+        orders.add(order);
+    }
+    
+    public boolean removeOrder(Order order){
+        return orders.remove(order);
+    }
     
     /**
      * Provides the methodology for encrypting the password before saving it to the database.

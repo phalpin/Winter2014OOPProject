@@ -35,7 +35,9 @@ pizzaShopControllers.controller('ShellCtrl', [
         };
         
         $scope.init = function(){
-            $scope.checkAuthentication();
+            if($scope.checkAuthentication() === true){
+                $scope.checkAccessLevel();
+            }
             $scope.checkCart();
         };
         
@@ -47,12 +49,26 @@ pizzaShopControllers.controller('ShellCtrl', [
             var auth = localStorage.getItem("Authentication");
             if(auth === "null"){
                 $rootScope.Authentication = null;
+                return false;
             }
             else{
                 $rootScope.Authentication = auth;
                 $http.defaults.headers.common.Authorization = auth;
+                return true;
             }
         };
+        
+        $scope.checkAccessLevel = function(){
+            var access = localStorage.getItem("AccessLevel");
+            if(access === "null"){
+                $rootScope.AccessLevel = null;
+                return false;
+            }
+            else{
+                $rootScope.AccessLevel = access;
+                return true;
+            }
+        }
 
         $scope.isActive = function(path){
             var pattern = '/' + path;

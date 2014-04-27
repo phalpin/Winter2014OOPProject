@@ -6,6 +6,8 @@ import PizzaShop.Models.Pizza;
 import PizzaShop.Models.PizzaSize;
 import PizzaShop.Models.PizzaTopping;
 import PizzaShop.Models.PizzaType;
+import PizzaShop.Models.User;
+import PizzaShop.Models.UserType;
 import PizzaShop.Resources.ActionResult;
 import PizzaShop.Resources.ActionResultStatus;
 import PizzaShop.Resources.IActionResult;
@@ -127,9 +129,90 @@ public class OrderService implements IDataService<Order> {
             result.setStatus(ActionResultStatus.SUCCESS);
         }
         catch(Exception ex){
+            result.setStatus(ActionResultStatus.FAILURE);
             result.setMessage(ex.getMessage());
         }
         
+        
+        return result;
+    }
+
+    public IActionResult<ArrayList<User>> ReadAll() {
+        ActionResult<ArrayList<User>> result = new ActionResult<ArrayList<User>>();
+        
+        try{
+            HashMap<Integer, User> tempUsers = new HashMap<Integer, User>();
+            HashMap<Integer, Order> tempOrders = new HashMap<Integer, Order>();
+            HashMap<Integer, Pizza> tempPizza = new HashMap<Integer, Pizza>();
+            
+            CallableStatement orders = con.prepareCall("{Call Order_ReadAll()}");
+            
+            orders.executeQuery();
+            
+            //The users who have orders.
+            ResultSet rs = orders.getResultSet();
+            while(rs.next()){
+                User u = new User();
+                u.setContactId(rs.getInt("ContactId"));
+                u.setFirstName(rs.getString("FirstName"));
+                u.setHomeNumber(rs.getString("HomeNumber"));
+                u.setId(rs.getInt("UserId"));
+                u.setLastName(rs.getString("LastName"));
+                u.setMiddleName(rs.getString("MiddleName"));
+                u.setMobileNumber(rs.getString("MobileNumber"));
+                u.setType(UserType.values()[rs.getInt("UserTypeId")-1]);
+                u.setUsername(rs.getString("Username"));
+                tempUsers.put(u.getId(), u);
+            }
+            
+            
+            //Now, let's get the orders associated with those users.
+            if(orders.getMoreResults()){
+                rs = orders.getResultSet();
+                
+                while(rs.next()){
+                    int orderId = rs.getInt("OrderId");
+                    int usrId = rs.getInt("UserId");
+                    int pizzaId = rs.getInt("PizzaId");
+                    int sizeId = rs.getInt("SizeId");
+                    int typeId = rs.getInt("TypeId");
+                    Integer toppingId = (Integer)rs.getObject("ToppingId");
+
+                    //Populate the temporary order items.
+                    if(!tempOrders.containsKey(orderId)){
+                        Order o = new Order();
+                        o.setId(orderId);
+                        o.setUserId(usrId);
+                        tempOrders.put(orderId, o);
+                        tempUsers.get(usrId).addOrder(o);
+                    }
+
+                    //Populate the temporary pizza items.
+                    if(!tempPizza.containsKey(pizzaId)){
+                        Pizza p = new Pizza();
+                        p.setOrderId(orderId);
+                        p.setId(pizzaId);
+                        p.setType(PizzaType.fromId(typeId));
+                        p.setSize(PizzaSize.fromId(sizeId));
+                        if(toppingId != null) p.addTopping(PizzaTopping.fromId(toppingId));
+                        tempPizza.put(pizzaId, p);
+                        tempOrders.get(orderId).addPizza(p);
+                    }
+                    else{
+                        if(toppingId != null) tempPizza.get(pizzaId).addTopping(PizzaTopping.fromId(toppingId));
+                    } 
+                }
+            }
+
+            
+            result.setResult(new ArrayList(tempUsers.values()));
+            result.setStatus(ActionResultStatus.SUCCESS);
+            
+        }
+        catch(Exception ex){
+            result.setStatus(ActionResultStatus.FAILURE);
+            result.setMessage(ex.getMessage());
+        }
         
         return result;
     }

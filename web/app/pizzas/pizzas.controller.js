@@ -1,4 +1,4 @@
-pizzaShopControllers.controller('PizzasCtrl', [
+pizzaShopApp.controller('PizzasCtrl', [
     '$scope','pizzaService','cartService',
     function($scope, pizzaService, cartService){
 
@@ -14,6 +14,8 @@ pizzaShopControllers.controller('PizzasCtrl', [
             types: null,
             sizes: null
         };
+        
+        $scope.cart = cartService.items;
         
         $scope.$watchCollection('[pizza.toppings, pizza.type, pizza.size]', function(){
             $scope.calculatePrice();
@@ -54,7 +56,7 @@ pizzaShopControllers.controller('PizzasCtrl', [
             pizzaService.getAllSizes()
                 .then(function(response){
                     if(response.status === 200){
-                        console.log(response.data);
+                        //console.log(response.data);
                         $scope.options.sizes = response.data;
                     }
                 });            
@@ -64,7 +66,7 @@ pizzaShopControllers.controller('PizzasCtrl', [
             pizzaService.getAllTypes()
                 .then(function(response){
                     if(response.status === 200){
-                        console.log(response.data);
+                        //console.log(response.data);
                         $scope.options.types = response.data;
                     }
                 });            

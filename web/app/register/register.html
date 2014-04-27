@@ -2,8 +2,8 @@
 
 <div class="row">
     <form role="form">
-            <h2>Sign up <small>for great justice!</small></h2>
-            <hr class="colorgraph">
+            <h2>Sign up <small>and order some great pizza</small></h2>
+            <hr class="colorgraph" />
             <div class="row">
 
                 <!-- First Name -->
@@ -28,35 +28,61 @@
                 </div>
             </div>
             
-            <div class="form-group">
-                    <input type="text" name="user_name" id="user_name" class="form-control input-lg" placeholder="User Name" tabindex="4" data-ng-model="user.username" required>
+            <div class="row">
+                <!-- UserName -->
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="user_name" id="first_name" class="form-control input-lg" placeholder="Username" tabindex="4" data-ng-model="user.username" required>
+                    </div>
+                </div>
+                
+                <!-- Home Number -->
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <div class="form-group">
+                            <input type="text" name="home_number" id="middle_name" class="form-control input-lg" placeholder="Home Number" tabindex="5" data-ng-model="user.homeNumber" required>
+                    </div>
+                </div>
+
+                <!-- Mobile Number -->
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <div class="form-group">
+                            <input type="text" name="mobile_number" id="middle_name" class="form-control input-lg" placeholder="Mobile Number" tabindex="6" data-ng-model="user.mobileNumber" required>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="5" data-ng-model="user.emailaddress" required>
+            
+            <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="7" data-ng-model="user.emailaddress" required>
+                        </div>
+                    </div>
             </div>
+            
             <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
-                                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="6" data-ng-model="user.password" required>
+                                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="8" data-ng-model="user.password" required>
                             </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
-                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="7" data-ng-model="confirmpassword" required>
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="9" data-ng-model="confirmpassword" required>
                             </div>
                     </div>
             </div>
             
             <div class="row">
-                <div class="progress">
-                    <div class="progress-bar" data-ng-class="progressType()" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-ng-style="passwordStrength()">
+                <div class="form-group">                
+                    <div class="progress">
+                        <div class="progress-bar alert-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-ng-style="passwordStrength()"></div>
                     </div>
                 </div>
             </div>
 
             <hr class="colorgraph">
             <div class="row">
-                    <div class="col-xs-12 col-md-12"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="8" data-ng-disabled="disableSubmit()" data-ng-click="submitRegistration()"></div>
+                    <div class="col-xs-12 col-md-12"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="10" data-ng-disabled="disableSubmit()" data-ng-click="submitRegistration()"></div>
             </div>
     </form>
 </div>

@@ -1,0 +1,64 @@
+<div class="row" data-ng-init="init()">
+    <div class="container">
+        <div data-ng-repeat="user in userOrders" class="admin-userorders-row" data-ng-class-odd="'admin-userorders-odd'" data-ng-class-even="'admin-userorders-even'" data-ng-hide="userOrders.length == 0">
+            <h3 class="userinfo">
+                <span class="name" data-ng-click="collapse(user)">{{user.firstName}} {{user.lastName}}</span>
+                <a class="phone" href="skype:{{user.mobileNumber}}?call" data-ng-if="user.mobileNumber !== null" ><span class="badge alert-info">Mobile: {{user.mobileNumber}}</span></a>
+                <a class="phone" href="skype:{{user.homeNumber}}?call" data-ng-if="user.homeNumber !== null" ><span class="badge alert-success">Home: {{user.homeNumber}}</span></a>
+                <span class="badge">Username: {{user.username}}</span>
+                <span class="badge">Role: {{user.type}}</span>
+            </h3>
+            <div class="orders">
+                 <table class="table table-account" data-ng-hide="user.collapsed">
+                    <thead>
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Pizzas</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr data-ng-repeat="order in user.orders">
+                            <td>MPIZZA-{{order.id}}</td>
+                            <td>
+                                <table class="table table-invis pizzadetail">
+                                    <!--
+                                    <thead>
+                                        <tr>
+                                            <th class="size">Size</th>
+                                            <th class="style">Style</th>
+                                            <th class="toppings">Toppings</th>
+                                            <th class="price">Item Price</th>
+                                        </tr>
+                                    </thead>
+                                    -->
+
+                                    <tbody>
+                                        <tr data-ng-repeat="pizza in order.pizzas">
+                                            <td class="size">{{pizza.size}}</td>
+                                            <td class="style">{{pizza.type}}</td>
+                                            <td class="toppings">
+                                                {{pizza.toppings | toppingCSVFilter}}
+                                            </td>
+                                            <td class="price">
+                                                {{pizza.cost | priceFilter}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>
+                                {{order.cost | priceFilter}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="alert alert-info" data-ng-hide="userOrders.length > 0">
+            <strong>No orders have been made =(</strong>
+            Get those salespeople moving!
+        </div>
+    </div>
+</div>

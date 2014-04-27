@@ -34,3 +34,40 @@ table.pizzadetail td.toppings{
 table.pizzadetail td.price{
     width: 10%;
 }
+
+.admin-userorders-row h3.userinfo{
+    display:table-cell;
+    vertical-align:middle;
+    float:none;
+}
+
+.admin-userorders-row h3.userinfo span{
+    vertical-align: middle;
+}
+
+.admin-userorders-row{
+    padding: 5px;
+}
+
+.admin-userorders-row .name:hover{
+    background-color: rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.admin-userorders-odd{
+    background-color: rgba(200,200,200,0.10);
+}
+
+.cart-preview-header{
+    background-color: rgba(200,200,200,0.10);
+    padding: 5px;
+}
+
+.cart-preview .total{
+    text-align: right;
+    font-weight: bold;
+}
+
+.cart-sidebar{
+    text-align: center;
+}

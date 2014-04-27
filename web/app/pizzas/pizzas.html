@@ -62,11 +62,42 @@
     <div class="col-xs-6 col-md-4">
         
         <div class="container">
-            <h2>Total: {{pizza.cost | priceFilter}}</h2>
+            <h2>Your Pizza Build: {{pizza.cost | priceFilter}}</h2>
         </div>
         
-        <div class="container">
-            
+        <div class="col-xs-12 col-md-12" data-ng-if="cart.length > 0">
+            <table class="table table-bordered cart-preview">
+                <thead>
+                    <tr class="cart-preview-header">
+                        <th colspan="2" style="text-align:center;">
+                            In This Order
+                        </th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr data-ng-repeat="item in cart">
+                        <td>
+                            <strong>{{item | pizzaNameFilter}}</strong><br />
+                            <small>with {{item.toppings | toppingCSVFilter}}</small>
+                        </td>
+                        <td>
+                            {{item.cost | priceFilter}}
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="2" class="total">
+                            Order Total: {{cart | cartItemTotalFilter | priceFilter}}
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr >
+                        <td colspan="2"><a class="btn btn-full btn-primary" href="#/Cart">Proceed to Cart</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         
     </div>

@@ -17,6 +17,10 @@ pizzaShopApp.controller('LoginModalCtrl', [
                         localStorage.setItem('Authentication', response.data.token);
                         $rootScope.Authentication = response.data.token;
                         toaster.pop('success', "Successfully Logged In", "You're all logged in!", null, 'trustedHtml');
+                        userService.getAccessLevel().then(function(response){
+                            $rootScope.AccessLevel = response.data.replace(/"/g, '');
+                            localStorage.setItem('AccessLevel', $rootScope.AccessLevel);
+                        });
                         $modalInstance.close(true);
                     }
                     else{

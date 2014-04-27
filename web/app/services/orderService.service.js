@@ -46,6 +46,14 @@ pizzaShopApp.factory(
                         url:baseEndpoint
                     });
                     return promise;
+                },
+                
+                getAllOrdersForAllUsers: function(){
+                    var promise = $http({
+                        method:'GET',
+                        url:baseEndpoint + 'All'
+                    });
+                    return promise;
                 }
                 
                 

@@ -8,7 +8,9 @@ pizzaShopControllers.controller('LogoutCtrl',
                 }
                 toaster.pop('info', "Successfully Logged Out", "You're all logged out. Congrats. Leave now.", null, 'trustedHtml');
                 localStorage.setItem("Authentication", null);
+                localStorage.setItem("AccessLevel", null);
                 $rootScope.Authentication = null;
+                $rootScope.AccessLevel = null;
                 $http.defaults.headers.common.Authorization = null;
                 $location.path('/');
             };

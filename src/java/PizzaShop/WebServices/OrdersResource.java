@@ -4,6 +4,7 @@ import PizzaShop.Data.ServiceFactory;
 import PizzaShop.Models.Order;
 import PizzaShop.Models.Pizza;
 import PizzaShop.Models.User;
+import PizzaShop.Models.UserType;
 import PizzaShop.Resources.GsonManager;
 import PizzaShop.Resources.IActionResult;
 import PizzaShop.Services.OrderService;
@@ -82,5 +83,18 @@ public class OrdersResource {
         }
         
         return Success("Order not submitted.");
+    }
+    
+    @Path("All")
+    @GET
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Response getAllOrders(@Context HttpHeaders headers){
+        User requestingUser = GetUser(headers);
+        if(requestingUser.getType() == UserType.Administrator){
+            IActionResult<ArrayList<User>> allOrders = _svc.ReadAll();
+            return Success(allOrders);
+        }
+        return Success("Unauthorized");
     }
 }

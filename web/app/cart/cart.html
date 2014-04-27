@@ -29,13 +29,14 @@
         </table>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4" class="cart-sidebar">
         <div class="container">
             <h2>Total: {{cart.total | priceFilter}}</h2>
         </div>
         
-        <div class="container">
-            <button class="btn btn-lg btn-primary" data-ng-click="checkOut()">Check Out</button>
+        <div class="col-md-12">
+            <button class="btn btn-lg btn-primary btn-full" data-ng-click="checkOut()">Check Out</button>
+            <a class="btn btn-lg btn-danger btn-full" href="#/Pizzas">Build More Pizzas</a>
         </div>
         
     </div>

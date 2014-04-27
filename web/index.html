@@ -46,6 +46,7 @@
                                     <ul class="nav navbar-nav navbar-right">
                                         <li data-ng-repeat="l in LoginLinks"><a href="{{l.Path}}" title="{{l.Title}}" data-ng-class="{ active: isActive(l.Path) }">{{l.Name}}</a></li>
                                         <li><a href="{{CartLink.Path}}" title="{{CartLink.Title}}">{{CartLink.Name}}</a></li>
+                                        <li data-ng-if="AccessLevel === 'Administrator'"><a href="#/AllOrders" title="View All Orders">View All Orders</a></li>
                                     </ul>
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->
@@ -55,8 +56,7 @@
 
             </div>
             <!-- Content Container for Views to be loaded into dynamically. -->
-            <div data-ng-view data-ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></div>
-            <!--<div data-ng-view data-ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></div>-->
+            <div data-ng-view="" class="viewport"></div>
         </div>
         <toaster-container toaster-options="{'time-out': 2000, 'position-class':'toast-bottom-full-width'}"></toaster-container>
     </body>
@@ -84,6 +84,7 @@
     <script src="app/filters/priceFilter.filter.js"></script>
     <script src="app/filters/pizzaNameFilter.filter.js"></script>
     <script src="app/filters/toppingCSVFilter.filter.js"></script>
+    <script src="app/filters/cartItemTotalFilter.filter.js"></script>
 
     <!-- Controllers -->
     <script src="app/controllers.js"></script>
@@ -96,6 +97,7 @@
     <script src="app/cart/cart.controller.js"></script>
     <script src="app/login/login.modal.controller.js"></script>
     <script src="app/account/account.controller.js"></script>
+    <script src="app/admin/allorders/allorders.controller.js"></script>
     
 
 </html>
