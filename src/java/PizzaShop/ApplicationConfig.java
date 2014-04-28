@@ -25,6 +25,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(PizzaShop.WebServices.OrdersResource.class);
         resources.add(PizzaShop.WebServices.PizzasResource.class);
+        resources.add(PizzaShop.WebServices.ToppingsResource.class);
         resources.add(PizzaShop.WebServices.UsersResource.class);
     }
     

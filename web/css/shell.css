@@ -141,3 +141,8 @@ table.pizzadetail td.price{
 .slick-dots{
     position: static!important;
 }
+
+.home .slick-slider{
+    width: 900px;
+    margin: 0 auto;
+}
