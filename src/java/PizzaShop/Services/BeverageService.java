@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Services;
 
 import PizzaShop.Data.DatabaseFactory;
@@ -11,13 +5,11 @@ import PizzaShop.Models.Beverage;
 import PizzaShop.Resources.IActionResult;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author phalpin
+ * Beverage Data Access Layer - Unimplemented for the time being.
  */
 public class BeverageService implements IDataService<Beverage>{
 
@@ -31,8 +23,7 @@ public class BeverageService implements IDataService<Beverage>{
             Logger.getLogger(BeverageService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
     @Override
     public IActionResult<Beverage> Create(Beverage obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Services;
 
 import PizzaShop.Data.DatabaseFactory;
-import PizzaShop.Data.ServiceFactory;
 import PizzaShop.Models.Pizza;
 import PizzaShop.Models.PizzaSize;
 import PizzaShop.Models.PizzaTopping;
@@ -19,13 +12,11 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author phalpin
+ * Pizza Data Access Layer.
  */
 public class PizzaService implements IDataService<Pizza> {
 

@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.WebServices;
 
 import PizzaShop.Data.ServiceFactory;
@@ -27,7 +21,9 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-
+/**
+ * Users Endpoint.
+ */
 @Path("Users")
 public class UsersResource extends BaseSvc {
 
@@ -94,7 +90,11 @@ public class UsersResource extends BaseSvc {
 
     }
     
-    
+    /**
+     * Method for attempting a login from a remove application.
+     * @param content username and password in JSON.
+     * @return Token for the session or error message.
+     */
     @POST
     @Path("login")
     @Consumes("application/json")
@@ -138,6 +138,11 @@ public class UsersResource extends BaseSvc {
         }
     }
     
+    /**
+     * Method for registering an account with the application
+     * @param content Fully populated user object to register.
+     * @return Success or failure of registration.
+     */
     @POST
     @Path("register")
     @Consumes("application/json")
@@ -163,6 +168,11 @@ public class UsersResource extends BaseSvc {
         }
     }
     
+    /**
+     * Method for determining the access level of a given user, given token authentication.
+     * @param headers Auto sent by the application.
+     * @return The type of user the request was sent from.
+     */
     @GET
     @Path("AccessLevel")
     @Consumes("application/json")

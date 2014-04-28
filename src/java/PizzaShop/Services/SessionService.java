@@ -16,15 +16,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author phalpin
+ * Session Data Access Layer + Lazy Load Cache.
  */
 public class SessionService implements IDataService<Session> {
 
     private Connection con = null;
     
-    private HashMap<String, User> _sessions = new HashMap<String, User>();
-    private HashMap<User, Session> _usersSessions = new HashMap<User, Session>();
+    private final HashMap<String, User> _sessions = new HashMap<String, User>();
+    private final HashMap<User, Session> _usersSessions = new HashMap<User, Session>();
     
     public SessionService(){
         try{
@@ -147,6 +146,11 @@ public class SessionService implements IDataService<Session> {
         return result;
     }
     
+    /**
+     * Grabs a session via a token.
+     * @param token Token to read from.
+     * @return The session associated with that token.
+     */
     public IActionResult<Session> ReadByToken(String token){
         ActionResult<Session> result = new ActionResult<Session>();
         if(SessionCached(token)){
@@ -183,22 +187,47 @@ public class SessionService implements IDataService<Session> {
     
     
     //<editor-fold defaultstate="collapsed" desc="Cache Management">
+    /**
+     * Method for determining whether a session is cached or not.
+     * @param sess Session to check for.
+     * @return boolean.
+     */
     public boolean SessionCached(Session sess){
         return _sessions.containsKey(sess.getToken());
     }
     
+    /**
+     * Method for determining whether a session is cached or not.
+     * @param token Token to check for.
+     * @return Boolean.
+     */
     public boolean SessionCached(String token){
         return _sessions.containsKey(token);
     }
     
+    /**
+     * Method for determining whether a user has a session.
+     * @param u User to check for a session for.
+     * @return Boolean.
+     */
     public boolean UserHasSession(User u){
         return _usersSessions.containsKey(u);
     }
     
+    /**
+     * Method for getting a user from a given session.
+     * @param sess Session to backtrack a user from.
+     * @return User associated with that session.
+     */
     public User GetUserFromSession(Session sess){
         return GetUserFromSession(sess.getToken());
     }
     
+    /**
+     * Returns the user associated with a given session token.
+     * @param token Token to backtrack a user for.
+     * @return The user associated with the given session token. 
+     */
     public User GetUserFromSession(String token){
         if(_sessions.containsKey(token)){
             return _sessions.get(token);
@@ -206,6 +235,11 @@ public class SessionService implements IDataService<Session> {
         return null;        
     }
     
+    /**
+     * Accessor for getting a session given a user.
+     * @param u User to get the session from.
+     * @return The session associated with a given user.
+     */
     private Session GetSessionFromUser(User u){
         if(_usersSessions.containsKey(u)){
             return _usersSessions.get(u);
@@ -213,6 +247,11 @@ public class SessionService implements IDataService<Session> {
         return null;
     }
     
+    /**
+     * Method for accessing a session given a particular token (population)
+     * @param token Token to grab the full session for.
+     * @return The full session given a token.
+     */
     private Session GetSessionFromToken(String token){
         if(_sessions.containsKey(token)){
             return GetSessionFromUser(_sessions.get(token));
@@ -222,11 +261,20 @@ public class SessionService implements IDataService<Session> {
         }
     }
     
+    /**
+     * Adds a session to the cache.
+     * @param sess Session to add
+     * @param u User to add for.
+     */
     public void AddSessionToCache(Session sess, User u){
         _sessions.put(sess.getToken(), u);
         _usersSessions.put(u, sess);
     }
         
+    /**
+     * Removes a session from the cache.
+     * @param sess Session to remove.
+     */
     public void RemoveSessionFromCache(Session sess){
         if(_sessions.containsKey(sess.getToken())){
             User removed = _sessions.remove(sess.getToken());
@@ -234,6 +282,10 @@ public class SessionService implements IDataService<Session> {
         }
     }
     
+    /**
+     * Removes a session from the cache relative to a user.
+     * @param u User to look up a session to remove.
+     */
     public void RemoveSessionFromCache(User u){
         if(_usersSessions.containsKey(u)){
             Session removed = _usersSessions.remove(u);

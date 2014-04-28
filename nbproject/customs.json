@@ -1,0 +1,10 @@
+{
+    "attributes": {
+        "interval": {}
+    },
+    "elements": {
+        "slick": {},
+        "carousel": {},
+        "slide": {}
+    }
+}

@@ -21,6 +21,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+/**
+ * Order Data Access Layer
+ */
 public class OrderService implements IDataService<Order> {
 
     private Connection con = null;
@@ -81,6 +84,11 @@ public class OrderService implements IDataService<Order> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    /**
+     * Reads all orders for a given user.
+     * @param userId User ID to read orders for.
+     * @return A list of all orders for this user.
+     */
     public IActionResult<ArrayList<Order>> ReadAllForUser(int userId){
         ActionResult<ArrayList<Order>> result = new ActionResult<ArrayList<Order>>();
         
@@ -137,6 +145,10 @@ public class OrderService implements IDataService<Order> {
         return result;
     }
 
+    /**
+     * Reads all orders for all users.
+     * @return List of Users, with order collections populated.
+     */
     public IActionResult<ArrayList<User>> ReadAll() {
         ActionResult<ArrayList<User>> result = new ActionResult<ArrayList<User>>();
         

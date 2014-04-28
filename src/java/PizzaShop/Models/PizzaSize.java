@@ -1,22 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Models;
 
-import static PizzaShop.Models.PizzaTopping.BlackOlives;
-import static PizzaShop.Models.PizzaTopping.Jalapenos;
-import static PizzaShop.Models.PizzaTopping.Pepperoni;
-import static PizzaShop.Models.PizzaTopping.Sausage;
 import PizzaShop.Outbound.SizeJSON;
-import PizzaShop.Outbound.ToppingJSON;
 import java.util.ArrayList;
 
 /**
- *
- * @author phalpin
+ * PizzaSize enum - contains all information for available pizza sizes.
  */
 public enum PizzaSize implements IDBEnum, IPriceableEntity {
     //Values
@@ -24,11 +12,21 @@ public enum PizzaSize implements IDBEnum, IPriceableEntity {
     Medium (2, "Medium", 7.50),
     Large (3, "Large", 10.00);
 
+    /**
+     * Retrieve the specific size of pizza from a database ID.
+     * @param sizeId DB ID to read.
+     * @return PizzaSize associated with that enum's id.
+     */
     public static PizzaSize fromId(int sizeId) {
         return PizzaSize.values()[sizeId - 1];
     }
     
-    //Enum Implementation
+    /**
+     * Enum Implementation.
+     * @param val DB ID of this enum.
+     * @param name String representation of this enum.
+     * @param cost Cost associated with this enum.
+     */
     PizzaSize(int val, String name, double cost){
         _value = val;
         _name = name;
@@ -65,7 +63,10 @@ public enum PizzaSize implements IDBEnum, IPriceableEntity {
         return _cost;
     }
     
-    
+    /**
+     * Returns all items for sending via JSON.
+     * @return ArrayList of SizeJSON formatted items to send from a web service.
+     */
     public static ArrayList<SizeJSON> getOptions(){
         ArrayList<SizeJSON> result = new ArrayList<SizeJSON>();
         result.add(new SizeJSON(Small));

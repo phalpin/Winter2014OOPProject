@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Resources;
 
 /**
@@ -12,12 +6,6 @@ package PizzaShop.Resources;
  * @param <T> Type of Result to check for.
  */
 public class ActionResult<T> implements IActionResult<T> {
-
-    private T _result;
-    private String _msg;
-    private ActionResultStatus _status;
-    
-    
     //<editor-fold desc="IActionResult Members">
     @Override
     public void setResult(T obj) {
@@ -53,11 +41,14 @@ public class ActionResult<T> implements IActionResult<T> {
     public boolean isSuccess(){
         return _status == ActionResultStatus.SUCCESS;
     }
-    //</editor-fold>
-
-    public void setMessage(String an_error_occurred, Exception ex) {
-        _msg = an_error_occurred + ": " + ex.getMessage();
+    
+    @Override
+    public void setMessage(String errorText, Exception ex) {
+        _msg = errorText + ": " + ex.getMessage();
     }
+    //</editor-fold>
     
-    
+    private T _result;
+    private String _msg;
+    private ActionResultStatus _status;
 }

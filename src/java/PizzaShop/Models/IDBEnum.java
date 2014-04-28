@@ -1,16 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Models;
 
 /**
  * The baseline for what a DBEnum should have.
- * @author phalpin
  */
 public interface IDBEnum {
+    /**
+     * Returns the string-based representation of this enum.
+     * @return Name of the DB Enum.
+     */
     public String getName();
+    
+    /**
+     * Returns the DB ID of this enum.
+     * @return DB ID of this enum.
+     */
     public int getValue();
 }

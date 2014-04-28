@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Services;
 
 import PizzaShop.Resources.IActionResult;
-import java.util.ArrayList;
 
 /**
  * Determines the standard structure of a service.

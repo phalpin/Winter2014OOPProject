@@ -9,7 +9,8 @@ var pizzaShopApp = angular.module
             'pizzaShopControllers',
             'ngAnimate',
             'toaster',
-            'ui.bootstrap'
+            'ui.bootstrap',
+            'slick'
         ]
    );
 
@@ -54,6 +55,10 @@ pizzaShopApp.config(['$routeProvider',
             when('/AllOrders', {
                 templateUrl: 'app/admin/allorders/allorders.html',
                 controller: 'AllOrdersCtrl'
+            }).
+            when('/About', {
+                templateUrl: 'app/about/about.html',
+                controller: 'AboutCtrl'
             });
     }
 ]);

@@ -1,16 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Models;
 
 /**
  * The baseline of what a DB Driven entity should have.
- * @author phalpin
  */
 public interface IDBEntity {
+    
+    /**
+     * Accessor for the ID of this entity.
+     * @return The DB ID of this entity.
+     */
     public int getId();
+    
+    /**
+     * Setter for the ID of this entity (ONLY FROM SERVICE LAYER)
+     * @param id ID to set for this entity.
+     */
     public void setId(int id);
 }

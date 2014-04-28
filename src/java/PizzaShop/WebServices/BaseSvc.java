@@ -20,6 +20,7 @@ public class BaseSvc {
     private static UserService _usrSvc = ServiceFactory.Instance().getUsrSvc();
     private static SessionService _ssnSvc = ServiceFactory.Instance().getSsnSvc();
     
+    //<editor-fold desc="Success Cases">
     public static Response Success(){
         return Response.status(200).build();
     }
@@ -40,7 +41,9 @@ public class BaseSvc {
             return Response.status(200).entity(result.getMessage()).build();
         }
     }
+    //</editor-fold>
     
+    //<editor-fold desc="Fail Cases">
     public static Response Fail(){
         return Response.status(500).build();
     }
@@ -56,27 +59,33 @@ public class BaseSvc {
     public static Response Fail(Exception ex){
         return Response.status(500).entity(ex.getMessage()).build();
     }
+    //</editor-fold>
     
+    /**
+     * Determines whether a token is authorized to make requests.
+     * @param token Token to look up user for.
+     * @return boolean - whether use is authorized to make a request.
+     */
     public static boolean IsAuthorized(String token){
         IActionResult<Session> sess = _ssnSvc.ReadByToken(token);
         
         return sess.isSuccess();
-
-        //TODO: Implement Time checking for session to make sure everything is kosher in terms of startDate vs now..
-        /*
-        if(sess.isSuccess()){
-            
-        }
-        else{
-            return false;
-        }
-        */
     }
     
+    /**
+     * Determines whether a token is authorized to make requests or not.
+     * @param headers Headers to examine for a token.
+     * @return Boolean - whether the user is authorized to issue requests or not.
+     */
     public static boolean IsAuthorized(HttpHeaders headers){
         return IsAuthorized(headers.getHeaderString("Authorization"));
     }
     
+    /**
+     * Method for accessing a user given a set of headers (auth token)
+     * @param headers Headers to examine
+     * @return User making the request.
+     */
     public static User GetUser(HttpHeaders headers){
         String token = headers.getHeaderString("Authorization");
         

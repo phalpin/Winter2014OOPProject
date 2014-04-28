@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Outbound;
 
 import PizzaShop.Models.PizzaTopping;
 
 /**
- *
- * @author phalpin
+ * JSON Friendly Representation of the PizzaTopping enum.
  */
 public class ToppingJSON {
     private final String name;
     private final double cost;
-    private int id;
+    private final int id;
     
     public ToppingJSON(PizzaTopping top){
         name = top.getName();

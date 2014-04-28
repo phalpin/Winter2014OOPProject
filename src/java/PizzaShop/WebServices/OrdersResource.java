@@ -11,7 +11,6 @@ import PizzaShop.Services.OrderService;
 import PizzaShop.Services.PizzaService;
 import static PizzaShop.WebServices.BaseSvc.GetUser;
 import static PizzaShop.WebServices.BaseSvc.Success;
-import static PizzaShop.WebServices.BaseSvc.Success;
 import com.google.common.reflect.TypeToken;
 import java.util.ArrayList;
 import javax.ws.rs.Consumes;
@@ -41,9 +40,9 @@ public class OrdersResource {
     }
 
     /**
-     * Retrieves representation of an instance of PizzaShop.WebServices.OrdersResource
-     * @param headers
-     * @return an instance of java.lang.String
+     * Retrieves all orders for a given user.
+     * @param headers Auto sent headers from application.
+     * @return Response w/ data populated with orders if available.
      */
     @GET
     @Produces("application/json")
@@ -58,6 +57,12 @@ public class OrdersResource {
         }
     }
     
+    /**
+     * Submits an order 
+     * @param content JSON representation of an order.
+     * @param headers Headers auto sent from application.
+     * @return Response w/ creation status.
+     */
     @Path("Submit")
     @POST
     @Produces("application/json")
@@ -85,6 +90,11 @@ public class OrdersResource {
         return Success("Order not submitted.");
     }
     
+    /**
+     * Method for retrieving all orders for all users.
+     * @param headers Headers to examine to make sure user is an administrator.
+     * @return All orders / unauthorized.
+     */
     @Path("All")
     @GET
     @Produces("application/json")

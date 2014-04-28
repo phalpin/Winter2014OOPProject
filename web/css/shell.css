@@ -2,6 +2,26 @@
     border-radius: 0!important;
 }
 
+.home{
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pageContainer{
+    background-color: white;
+    padding: 0 0 30px 0;
+    border-width: 0 5px 5px 5px;
+    border-style: solid;
+    border-color: rgba(255,100,100,0.05);
+    -webkit-box-shadow: 0px 0px 49px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 49px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 49px 0px rgba(0,0,0,0.5);
+}
+
+body{
+    background-image: url('../images/background.png');
+}
+
 .btn-full{
     width: 100%;
 }
@@ -70,4 +90,54 @@ table.pizzadetail td.price{
 
 .cart-sidebar{
     text-align: center;
+}
+
+.about .slick-slider{
+    height: 377px;
+    width: 600px;
+    overflow: hidden;
+}
+
+.owners .title{
+    text-align: center;
+    margin: 0 10px;
+}
+
+.owners .entry{
+    margin: 0 0 30px 0;
+}
+
+.owners .entry .picture{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.owners .entry .body{
+    padding: 10px;
+}
+
+.pizzablurb{
+    text-align: center;
+}
+
+.pizzablurb .slick-slider{
+    margin: 0 auto;
+}
+
+.pizzablurb p{
+    padding: 10px;
+}
+
+.legal{
+    margin: 10px 0 0 0;
+    text-align: center;
+}
+
+.slidercontainer{
+    background-color: rgba(255,0,0,0.1);
+    width: 100%;
+}
+
+.slick-dots{
+    position: static!important;
 }

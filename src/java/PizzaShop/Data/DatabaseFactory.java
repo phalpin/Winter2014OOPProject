@@ -1,22 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.text.MessageFormat;
-import com.mysql.jdbc.Driver;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * The Database Creation Singleton. Keeps the value nice and cached.
- * @author phalpin
  */
 public class DatabaseFactory {
     
@@ -79,6 +71,7 @@ public class DatabaseFactory {
         
     }
     
+
     private String getConnectionString(){
             return MessageFormat.format(
                     "{0}:{1}://{2}:{3}/{4}",
@@ -91,12 +84,12 @@ public class DatabaseFactory {
         
     }
     
+    /**
+     * Used to obtain a mysql connection for a given service to use.
+     * @return MySQL connection object
+     * @throws SQLException Depending on how the MySQL driver is feeling at any given moment.
+     */
     public Connection getConnection() throws SQLException {
         return _con;
-        /*
-        String connString = getConnectionString();
-        Connection con = DriverManager.getConnection(connString, _user, _pass);
-        return con;
-        */
     }
 }

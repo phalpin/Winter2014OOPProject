@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package PizzaShop.Data;
 
 /**
- * SQL constants for the application to use when calling stored procedures.
+ * SQL constants for the application to use when calling stored procedures. Only partially used at the moment.
  */
 public class SqlConsts {
     

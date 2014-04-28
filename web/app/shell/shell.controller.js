@@ -12,6 +12,11 @@ pizzaShopControllers.controller('ShellCtrl', [
                 Name: "Build Your Pizza",
                 Path: "#/Pizzas",
                 Title: "Pizzas"
+            },
+            {
+                Name: "About Us",
+                Path: "#/About",
+                Title: "About The Creators"
             }
         ];
         
